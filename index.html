@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AZURETRIX 2K26 | National Level Symposium | Department of EEE - UCE Arni</title>
+  <meta name="description" content="AZURETRIX 2K26 - A National Level Technical & Non-Technical Symposium presented by the Department of Electrical & Electronics Engineering, University College of Engineering Arni (A Constituent College of Anna University Chennai). 23 November 2026. Free Registration. No On-Spot Registration.">
+  <meta name="keywords" content="Azuretrix 2K26, Azuretrix, EEE Symposium 2026, UCE Arni, University College of Engineering Arni, Anna University, Electrical and Electronics Engineering, National Level Technical Symposium, Powering Tomorrow, 23 November 2026">
+  <meta name="author" content="Department of Electrical & Electronics Engineering, UCE Arni">
+  <meta name="theme-color" content="#060c18">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="AZURETRIX 2K26 | National Level EEE Symposium">
+  <meta property="og:description" content="INNOVATE • EXPLORE • EXCEL. 23 November 2026 at UCE Arni. Free Registration. No On-Spot Registration.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://azuretrix-2k26.github.io/">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="eee-body">
+
+  <!-- HIGH-TECH EEE POWER-UP LOADING SCREEN -->
+  <div id="loader-screen" class="loader-screen" aria-label="Loading Azuretrix 2K26">
+    <div class="loader-vignette"></div>
+    <div class="loader-box">
+      <!-- High Voltage Animated Insignia -->
+      <div class="loader-emblem">
+        <svg class="loader-emblem-svg" viewBox="0 0 100 100" fill="none">
+          <polygon points="50,4 92,25 92,72 50,96 8,72 8,25" stroke="#0066ff" stroke-width="2.5" class="loader-hex-outer" />
+          <polygon points="50,14 82,31 82,68 50,86 18,68 18,31" stroke="#00d2ff" stroke-width="1.8" stroke-dasharray="6 3" class="loader-hex-inner" />
+          <path d="M52,18 L38,48 L50,48 L44,80 L64,44 L50,44 L54,18 Z" fill="url(#loaderBoltGrad)" class="loader-bolt" />
+          <circle cx="50" cy="50" r="42" stroke="rgba(0, 210, 255, 0.4)" stroke-width="1.5" class="loader-pulse-ring" />
+          <defs>
+            <linearGradient id="loaderBoltGrad" x1="38" y1="18" x2="64" y2="80" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ffd600" />
+              <stop offset="50%" stop-color="#00d2ff" />
+              <stop offset="100%" stop-color="#0066ff" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <h2 class="loader-title">AZURETRIX <span class="text-cyan">2K26</span></h2>
+      <p class="loader-dept">DEPT OF ELECTRICAL &amp; ELECTRONICS ENGINEERING</p>
+      <p class="loader-college">University College of Engineering Arni</p>
+
+      <!-- Digital Progress Bar -->
+      <div class="loader-progress-track">
+        <div class="loader-progress-fill" id="loader-progress-fill"></div>
+      </div>
+
+      <div class="loader-status-row">
+        <span class="loader-status" id="loader-status-text">INITIALIZING POWER GRID...</span>
+        <span class="loader-percent" id="loader-percent">0%</span>
+      </div>
+
+      <button id="skip-loader-btn" class="loader-skip-btn" type="button">ENTER WEBSITE &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ACCESSIBILITY SKIP LINK -->
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+  <!-- REALISTIC FULLSCREEN THUNDER FLASH OVERLAY -->
+  <div id="thunder-flash" class="thunder-flash-overlay" aria-hidden="true"></div>
+
+  <!-- CINEMATIC FANTASY THEME + PARALLAX UNIVERSE (IRON THRONE, DRAGON CITADEL & FROZEN WALL) -->
+  <div class="cinematic-bg-universe" id="cinematic-bg" aria-hidden="true">
+    <!-- Deep Layer: The Epic Artwork with Smooth Parallax Drift & Depth Shift -->
+    <div class="parallax-bg-layer" id="parallax-artwork-layer">
+      <div class="cinematic-image-canvas" id="cinematic-image-canvas" style="background-image: url('assets/throne-theme-bg.jpg');"></div>
+    </div>
+
+    <!-- Atmospheric Dynamic Lighting (Torch Brazier Flicker on Left, Golden Citadel Glow on Right, Aurora over The Wall) -->
+    <div class="atmospheric-light torch-light" id="torch-ambient-light"></div>
+    <div class="atmospheric-light citadel-light"></div>
+    <div class="atmospheric-light ice-wall-aurora"></div>
+
+    <!-- REALISTIC FLAMING BRAZIER FIRE SYSTEM (Beside the Iron Throne) -->
+    <div class="brazier-fire-core" id="brazier-fire" aria-hidden="true">
+      <div class="fire-glow-base"></div>
+      <div class="flame flame-1"></div>
+      <div class="flame flame-2"></div>
+      <div class="flame flame-3"></div>
+      <div class="flame-sparks-emitter"></div>
+    </div>
+
+    <!-- DRAGON FIRE SKY BLAST SYSTEM -->
+    <div class="dragon-fire-blast" id="dragon-fire-blast" aria-hidden="true">
+      <div class="fire-beam-core"></div>
+      <div class="fire-burst-aura"></div>
+    </div>
+
+    <!-- Drifting Atmospheric Sea & Battlements Mist Layers -->
+    <div class="cinematic-mist-layer mist-deep" id="mist-deep-layer"></div>
+    <div class="cinematic-mist-layer mist-fore" id="mist-fore-layer"></div>
+
+    <!-- Majestic Flying Dragon Skyway Silhouette Animation -->
+    <div class="dragon-flight-skyway" id="dragon-skyway">
+      <div class="soaring-dragon" id="ambient-dragon">
+        <svg class="dragon-svg" viewBox="0 0 160 100" fill="currentColor">
+          <path class="dragon-wing-left" d="M80,48 C65,28 38,12 2,18 C16,34 28,52 46,58 C60,62 74,54 80,48 Z" />
+          <path class="dragon-wing-right" d="M80,48 C95,24 124,10 158,14 C142,30 130,48 112,56 C98,60 86,52 80,48 Z" />
+          <path class="dragon-body" d="M80,32 C78,24 82,15 84,8 C86,15 88,24 82,35 C83,48 84,65 82,78 C80,88 84,95 86,100 C83,95 78,85 78,74 C77,60 78,45 80,32 Z" />
+          <path class="dragon-head" d="M84,8 C85,4 82,0 80,0 C78,0 76,4 77,8 C78,12 83,12 84,8 Z" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- High Performance Dual Canvas: Interactive Embers & Fire Sparks + High-Voltage Circuit Bolts -->
+    <canvas id="electrical-canvas"></canvas>
+    <canvas id="embers-canvas"></canvas>
+
+    <!-- Subtle Tech Circuit Grid + Film Grain & Vignette for Contrast & Readability -->
+    <div class="circuit-grid-overlay"></div>
+    <div class="vignette-overlay"></div>
+    <div class="depth-gradient-mask"></div>
+  </div>
+
+  <!-- TOP NOTICE BANNER (EEE TELEMETRY & COMBO ANNOUNCEMENT) -->
+  <div class="telemetry-banner" id="telemetry-bar">
+    <div class="telemetry-container">
+      <div class="telemetry-item telemetry-status">
+        <span class="pulse-dot"></span>
+        <span class="telemetry-lbl">GRID:</span>
+        <span class="telemetry-val text-cyan">230V AC &bull; 50.0 Hz NOMINAL</span>
+      </div>
+      <div class="telemetry-item">
+        <span class="free-pill-mini">⚡ FREE REGISTRATION</span>
+        <span>ALL 10 EVENTS</span>
+      </div>
+      <div class="telemetry-item">
+        <span class="alert-pill-mini">⚠️ NO ON-SPOT REGISTRATION</span>
+        <span>ONLINE REGISTRATION MANDATORY</span>
+      </div>
+      <div class="telemetry-item">
+        <span class="date-pill-mini">📅 EVENT DATE: 23 NOVEMBER 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY NAVIGATION BAR -->
+  <header class="main-header" id="navbar">
+    <div class="nav-container">
+      
+      <!-- Brand Logo & Title -->
+      <a href="#hero" class="nav-brand" aria-label="Azuretrix 2K26 Home">
+        <div class="brand-emblem">
+          <svg viewBox="0 0 44 44" fill="none">
+            <polygon points="22,2 41,12 41,32 22,42 3,32 3,12" stroke="url(#navBrandGrad)" stroke-width="2" />
+            <path d="M24,10 L16,23 L22,23 L19,34 L29,20 L23,20 L26,10 Z" fill="#00d2ff" class="brand-spark" />
+            <defs>
+              <linearGradient id="navBrandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00d2ff" />
+                <stop offset="100%" stop-color="#0066ff" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">AZURETRIX <span class="brand-year">2K26</span></span>
+          <span class="brand-subtitle">DEPT OF EEE &bull; UCE ARNI</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="desktop-nav" aria-label="Primary Navigation">
+        <ul class="nav-menu">
+          <li><a href="#hero" class="nav-link active">HOME</a></li>
+          <li><a href="#about" class="nav-link">ABOUT</a></li>
+          <li><a href="#events" class="nav-link">EVENTS</a></li>
+          <li><a href="#events" class="nav-link nav-tech-link" id="nav-link-tech">TECHNICAL</a></li>
+          <li><a href="#events" class="nav-link nav-nontech-link" id="nav-link-nontech">NON-TECHNICAL</a></li>
+          <li><a href="#contact" class="nav-link">CONTACT</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Actions (Thunder Trigger + Register Button) -->
+      <div class="nav-actions">
+        <button id="thunder-btn" class="thunder-trigger-btn" type="button" title="Summon Thunder & Lightning">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <span>STRIKE</span>
+        </button>
+
+        <button id="nav-fire-btn" class="fire-trigger-btn" type="button" title="Unleash Dragon Fire">
+          <span class="fire-icon">🔥</span>
+          <span>FIRE</span>
+        </button>
+
+        <button class="nav-reg-btn electric-btn" id="nav-reg-trigger" type="button">
+          <span class="btn-text">REGISTER NOW</span>
+          <span class="btn-pill">FREE</span>
+        </button>
+
+        <!-- Mobile Toggle Button -->
+        <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Open Navigation" aria-expanded="false">
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <div class="mobile-menu-header">
+        <span class="mobile-brand">AZURETRIX 2K26</span>
+        <button class="mobile-close-btn" id="mobile-close-btn" aria-label="Close Navigation">&times;</button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="#hero" class="mobile-link">HOME</a></li>
+        <li><a href="#about" class="mobile-link">ABOUT AZURETRIX</a></li>
+        <li><a href="#events" class="mobile-link">ALL 10 EVENTS</a></li>
+        <li><a href="#events" class="mobile-link mobile-tech-link" id="mobile-link-tech">TECHNICAL EVENTS</a></li>
+        <li><a href="#events" class="mobile-link mobile-nontech-link" id="mobile-link-nontech">NON-TECHNICAL EVENTS</a></li>
+        <li><a href="#registration" class="mobile-link">REGISTRATION</a></li>
+        <li><a href="#contact" class="mobile-link">CONTACT &amp; CONVENERS</a></li>
+      </ul>
+      <div class="mobile-menu-footer">
+        <div class="mobile-tags">
+          <span class="tag-free">⚡ FREE REGISTRATION</span>
+          <span class="tag-alert">⚠️ NO ON-SPOT REGISTRATION</span>
+        </div>
+        <button class="mobile-cta-btn electric-btn" id="mobile-reg-trigger" type="button">
+          <span class="btn-text">REGISTER NOW &rarr;</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN PAGE CONTENT -->
+  <main id="main-content">
+
+    <!-- =========================================================================
+         SECTION 1: HERO SECTION (CLEAN, BOLD, UNCLUTTERED)
+         ========================================================================= -->
+    <section id="hero" class="hero-section">
+      <div class="hero-container">
+
+        <!-- Institution & Department Line -->
+        <div class="hero-institution-box">
+          <div class="inst-accent-bar"></div>
+          <h2 class="inst-college">UNIVERSITY COLLEGE OF ENGINEERING ARNI</h2>
+          <p class="inst-affil">A Constituent College of Anna University Chennai</p>
+          <h3 class="inst-dept">DEPARTMENT OF ELECTRICAL &amp; ELECTRONICS ENGINEERING</h3>
+          <p class="inst-presents">Proudly Presents</p>
+        </div>
+
+        <!-- Main Azuretrix 2K26 Title -->
+        <div class="hero-title-box">
+          <h1 class="hero-main-title">
+            <span class="txt-azure">AZURETRIX</span>
+            <span class="txt-year">2K26</span>
+          </h1>
+          <p class="hero-tagline">INNOVATE &bull; EXPLORE &bull; EXCEL</p>
+          <p class="hero-subline">A NATIONAL LEVEL TECHNICAL &amp; NON-TECHNICAL SYMPOSIUM</p>
+          
+          <div class="hero-theme-badge">
+            <span class="sparkle-icon">⚡</span>
+            <span>Department Identity: <strong>Powering Tomorrow</strong></span>
+          </div>
+        </div>
+
+        <!-- Key Info Badges (Date, Free Entry, No On-Spot) -->
+        <div class="hero-badge-row">
+          <div class="badge-card date-badge-card">
+            <span class="badge-label">EVENT DATE</span>
+            <span class="badge-value">23 NOVEMBER 2026</span>
+          </div>
+
+          <div class="badge-card free-badge-card">
+            <span class="badge-label">REGISTRATION FEE</span>
+            <span class="badge-value text-cyan">FREE REGISTRATION</span>
+          </div>
+
+          <div class="badge-card alert-badge-card">
+            <span class="badge-label">IMPORTANT MANDATE</span>
+            <span class="badge-value text-yellow">NO ON-SPOT REGISTRATION</span>
+          </div>
+        </div>
+
+        <!-- Live Countdown Timer (Target: 23 November 2026) -->
+        <div class="countdown-card">
+          <div class="countdown-heading">
+            <span class="live-dot"></span>
+            <span>COUNTDOWN TO 23 NOVEMBER 2026</span>
+          </div>
+          <div class="countdown-display" id="countdown-grid" data-target="2026-11-23T09:00:00+05:30">
+            <div class="time-block">
+              <span class="time-num" id="cd-days">--</span>
+              <span class="time-unit">DAYS</span>
+            </div>
+            <span class="time-sep">:</span>
+            <div class="time-block">
+              <span class="time-num" id="cd-hours">--</span>
+              <span class="time-unit">HOURS</span>
+            </div>
+            <span class="time-sep">:</span>
+            <div class="time-block">
+              <span class="time-num" id="cd-minutes">--</span>
+              <span class="time-unit">MINUTES</span>
+            </div>
+            <span class="time-sep">:</span>
+            <div class="time-block">
+              <span class="time-num" id="cd-seconds">--</span>
+              <span class="time-unit">SECONDS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Actions -->
+        <div class="hero-actions">
+          <button class="hero-btn-primary electric-btn" id="hero-register-btn" type="button">
+            <span class="btn-text">REGISTER NOW</span>
+            <span class="btn-pill">FREE</span>
+          </button>
+
+          <a href="#events" class="hero-btn-secondary circuit-btn">
+            <span>EXPLORE 10 EVENTS &darr;</span>
+          </a>
+
+          <button id="hero-thunder-trigger" class="hero-btn-thunder circuit-btn" type="button" title="Trigger Lightning Strike">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+            <span>THUNDER STRIKE</span>
+          </button>
+
+          <button id="hero-fire-trigger" class="hero-btn-fire fire-btn" type="button" title="Unleash Dragon Firestorm">
+            <span class="fire-icon">🔥</span>
+            <span>DRAGON FIRE</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================================================================
+         SECTION 2: ABOUT AZURETRIX (CLEAR, SPACIOUS & ACCESSIBLE)
+         ========================================================================= -->
+    <section id="about" class="about-section">
+      <div class="section-container">
+
+        <div class="section-heading-box">
+          <div class="section-tag">
+            <span class="tag-dot"></span>
+            <span>ABOUT THE SYMPOSIUM</span>
+          </div>
+          <h2 class="section-title">ENGINEERING INNOVATION &bull; NATIONAL PLATFORM</h2>
+          
+          <!-- Oscilloscope AC Sine Waveform (Requirement 9) -->
+          <div class="heading-waveform-bar" aria-hidden="true">
+            <span class="hw-line left"></span>
+            <svg class="hw-svg" viewBox="0 0 160 20" preserveAspectRatio="none">
+              <path class="hw-path" d="M0,10 L30,10 Q45,1 60,10 T90,10 T120,10 T150,10 L160,10" />
+              <path class="hw-pulse" d="M0,10 L30,10 Q45,1 60,10 T90,10 T120,10 T150,10 L160,10" />
+            </svg>
+            <span class="hw-freq-tag">50.0 Hz AC</span>
+            <span class="hw-line right"></span>
+          </div>
+
+          <p class="section-desc">Organized by the Department of Electrical &amp; Electronics Engineering at University College of Engineering Arni.</p>
+        </div>
+
+        <div class="about-flex-layout">
+          <!-- Left Text Card -->
+          <div class="about-text-card">
+            <h3 class="card-lead-title">Welcome to Azuretrix 2K26</h3>
+            <p class="about-para">
+              <strong>AZURETRIX 2K26</strong> is the premier national-level technical and non-technical symposium hosted by the <strong>Department of Electrical &amp; Electronics Engineering</strong> at <strong>University College of Engineering Arni</strong> (A Constituent College of Anna University Chennai).
+            </p>
+            <p class="about-para">
+              Driven by our departmental identity, <em>"Powering Tomorrow"</em>, the symposium provides an energetic arena for students from across institutions to showcase technical prototypes, command oratory research, solve practical circuits, and test their logical prowess in strategic challenges.
+            </p>
+            <div class="notice-callout-simple">
+              <span class="notice-callout-icon">⚠️</span>
+              <div>
+                <strong>Mandatory Registration Notice:</strong>
+                <p>Entry to all events is strictly governed by advance online registration. <strong>NO ON-SPOT REGISTRATION</strong> will be entertained on <strong>23 November 2026</strong>.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right 4-Stat Box Grid -->
+          <div class="about-stats-grid">
+            <div class="stat-card">
+              <span class="stat-big-val">10</span>
+              <span class="stat-title">Total Events</span>
+              <span class="stat-sub">5 Technical &bull; 5 Non-Technical</span>
+            </div>
+
+            <div class="stat-card free-stat">
+              <span class="stat-big-val text-cyan">100%</span>
+              <span class="stat-title">Free Registration</span>
+              <span class="stat-sub">Zero Entry Charges</span>
+            </div>
+
+            <div class="stat-card">
+              <span class="stat-big-val">23 NOV</span>
+              <span class="stat-title">Symposium Date</span>
+              <span class="stat-sub">Mark Your Calendar</span>
+            </div>
+
+            <div class="stat-card alert-stat">
+              <span class="stat-big-val text-yellow">00</span>
+              <span class="stat-title">On-Spot Entries</span>
+              <span class="stat-sub">Strictly Online Pre-Reg</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================================================================
+         SECTION 3: EVENTS ARENA (NEW WIDE SPEC-SHEET SHOWCASE LAYOUT)
+         ========================================================================= -->
+    <section id="events" class="events-section">
+      <div class="section-container">
+
+        <div class="section-heading-box">
+          <div class="section-tag">
+            <span class="tag-dot"></span>
+            <span>EVENTS HUB</span>
+          </div>
+          <h2 class="section-title">CHOOSE YOUR CHALLENGE</h2>
+
+          <!-- Oscilloscope AC Sine Waveform (Requirement 9) -->
+          <div class="heading-waveform-bar" aria-hidden="true">
+            <span class="hw-line left"></span>
+            <svg class="hw-svg" viewBox="0 0 160 20" preserveAspectRatio="none">
+              <path class="hw-path" d="M0,10 L30,10 Q45,1 60,10 T90,10 T120,10 T150,10 L160,10" />
+              <path class="hw-pulse" d="M0,10 L30,10 Q45,1 60,10 T90,10 T120,10 T150,10 L160,10" />
+            </svg>
+            <span class="hw-freq-tag">EVENTS ARENA</span>
+            <span class="hw-line right"></span>
+          </div>
+
+          <p class="section-desc">10 power-packed competitions across Technical and Non-Technical domains. Free registration for all events.</p>
+        </div>
+
+        <!-- High-Voltage Category Switcher Tabs -->
+        <div class="category-toggle-container">
+          <button class="cat-toggle-btn active" id="tab-btn-tech" data-tab="tech" type="button">
+            <span class="toggle-icon">⚡</span>
+            <span class="toggle-text">TECHNICAL EVENTS (5)</span>
+            <span class="toggle-pill blue-pill">CORE EEE</span>
+          </button>
+          
+          <button class="cat-toggle-btn" id="tab-btn-nontech" data-tab="nontech" type="button">
+            <span class="toggle-icon">🎯</span>
+            <span class="toggle-text">NON-TECHNICAL EVENTS (5)</span>
+            <span class="toggle-pill yellow-pill">STRATEGY &amp; FUN</span>
+          </button>
+
+          <button class="cat-toggle-btn" id="tab-btn-all" data-tab="all" type="button">
+            <span class="toggle-text">VIEW ALL (10)</span>
+          </button>
+        </div>
+
+
+        <!-- =====================================================================
+             TRACK 1: TECHNICAL EVENTS CONTAINER
+             ===================================================================== -->
+        <div class="events-deck-container" id="deck-technical">
+          <div class="deck-track-label tech-track">
+            <span class="track-indicator"></span>
+            <span>TECHNICAL DOMAIN &bull; ELECTRIC BLUE ACCENT</span>
+          </div>
+
+          <!-- EVENT 1: PROJECT EXPO -->
+          <article class="event-spec-card tech-spec-card" data-event-id="project-expo">
+            <div class="card-circuit-line"></div>
+            <div class="spec-card-header">
+              <div class="spec-header-left">
+                <div class="spec-icon-box">
+                  <svg class="event-spec-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="4" y="4" width="16" height="16" rx="2" />
+                    <rect x="9" y="9" width="6" height="6" />
+                    <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="spec-num-tag">#01 &bull; TECHNICAL</div>
+                  <h3 class="spec-title">Project Expo</h3>
+                  <p class="spec-tagline">Hardware models, embedded prototypes, and renewable energy systems.</p>
+                </div>
+              </div>
+              <div class="spec-header-right">
+                <span class="spec-badge badge-tech">TECHNICAL</span>
+                <span class="spec-team-badge">👥 1 – 4 Members</span>
+              </div>
+            </div>
+
+            <div class="spec-card-body">
+              <div class="spec-info-col">
+                <h4 class="spec-subhead">OVERVIEW</h4>
+                <p class="spec-desc">
+                  Exhibit your original electrical engineering hardware prototypes, IoT systems, smart grid models, and renewable power solutions before industry judges.
+                </p>
+                <div class="spec-bullets">
+                  <div class="bullet-item">⚡ 230V AC Single Phase laboratory power supply provided.</div>
+                  <div class="bullet-item">⚡ Working prototype, embedded hardware, or simulation mandatory.</div>
+                  <div class="bullet-item">⚡ 7 minutes demonstration + 3 minutes technical defense.</div>
+                </div>
+              </div>
+
+              <div class="spec-meta-col">
+                <div class="meta-row">
+                  <span class="meta-title">VENUE:</span>
+                  <span class="meta-content">Power Electronics &amp; Machines Lab</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-title">TIMING:</span>
+                  <span class="meta-content">10:30 AM – 01:00 PM</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-title">COORDINATOR:</span>
+                  <span class="meta-content text-yellow">Dr. K. Senthil Kumar (HOD/EEE) / Rajeshwaran G (+91 90427 56321)</span>
+                </div>
+                <div class="spec-card-actions">
+                  <button class="spec-reg-btn electric-btn" data-event-name="Project Expo" type="button">
+                    <span>REGISTER &rarr;</span>
+                  </button>
+                  <button class="spec-details-btn circuit-btn" data-event-id="project-expo" type="button">
+                    <span>View Rules Modal</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- EVENT 2: TECH TAKK -->
+          <article class="event-spec-card tech-spec-card" data-event-id="tech-takk">
+            <div class="card-circuit-line"></div>
+            <div class="spec-card-header">
+              <div class="spec-header-left">
+                <div class="spec-icon-box">
+                  <svg class="event-spec-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                    <line x1="12" x2="12" y1="19" y2="22" />
+                    <line x1="8" x2="16" y1="22" y2="22" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="spec-num-tag">#02 &bull; TECHNICAL</div>
+                  <h3 class="spec-title">Tech Takk</h3>
+                  <p class="spec-tagline">Technical paper presentation and technological research orations.</p>
+                </div>
+              </div>
+              <div class="spec-header-right">
+                <span class="spec-badge badge-tech">TECHNICAL</span>
+                <span class="spec-team-badge">👥 1 – 3 Members</span>
+              </div>
+            </div>
+
+            <div class="spec-card-body">
+              <div class="spec-info-col">
+                <h4 class="spec-subhead">OVERVIEW</h4>
+                <p class="spec-desc">
+                  Deliver compelling technical research presentations on contemporary frontiers: High Voltage DC, AI in Energy Optimization, EVs, and Next-Gen Semiconductors.
+                </p>
+                <div class="spec-bullets">
+                  <div class="bullet-item">⚡ PPT or PDF slide format (Maximum 15 slides).</div>
+                  <div class="bullet-item">⚡ Focus: Smart Grids, HVDC, AI in Power, Solid-State Electronics.</div>
+                  <div class="bullet-item">⚡ 7 minutes presentation followed by 3 minutes faculty Q&amp;A.</div>
+                </div>
+              </div>
+
+              <div class="spec-meta-col">
+                <div class="meta-row">
+                  <span class="meta-title">VENUE:</span>
+                  <span class="meta-content">Main Seminar Hall A</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-title">TIMING:</span>
+                  <span class="meta-content">10:30 AM – 12:45 PM</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-title">COORDINATOR:</span>
+                  <span class="meta-content text-yellow">Mr. S. Sathish (AP/EEE) / Vinothini (+91 63828 11745)</span>
+                </div>
+                <div class="spec-card-actions">
+                  <button class="spec-reg-btn electric-btn" data-event-name="Tech Takk" type="button">
+                    <span>REGISTER &rarr;</span>
+                  </button>
+                  <button class="spec-details-btn circuit-btn" data-event-id="tech-takk" type="button">
+                    <span>View Rules Modal</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- EVENT 3: ELECTRICAL QUIZ -->
+          <article class="event-spec-card tech-spec-card" data-event-id="electrical-quiz">
+            <div class="card-circuit-line"></div>
+            <div class="spec-card-header">
+              <div class="spec-header-left">
+                <div class="spec-icon-box">
+                  <svg class="event-spec-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                    <circle cx="12" cy="12" r="9" stroke-dasharray="2 3" opacity="0.5" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="spec-num-tag">#03 &bull; TECHNICAL</div>
+                  <h3 class="spec-title">Electrical Quiz</h3>
+                  <p class="spec-tagline">High-voltage trivia and fundamental electrical theories gauntlet.</p>
+                </div>
+              </div>
+              <div class="spec-header-right">
+                <span class="spec-badge badge-tech">TECHNICAL</span>
+                <span class="spec-team-badge">👥 2 Members</span>
+              </div>
+            </div>
+
+            <div class="spec-card-body">
+              <div class="spec-info-col">
+                <h4 class="spec-subhead">OVERVIEW</h4>
+                <p class="spec-desc">
+                  High-octane technical questionnaire testing circuit theorems, electromagnetic fields, electrical machines, power electronics, and modern instrumentation.
+                </p>
+                <div class="spec-bullets">
+                  <div class="bullet-item">⚡ Round 1: Written Prelims (30 objective questions).</div>
+                  <div class="bullet-item">⚡ Round 2: Rapid-Fire Audio/Visual Identification.</div>
+                  <div class="bullet-item">⚡ Round 3: High-Voltage Buzzer Arena with negative marking.</div>
+                </div>
+              </div>
+
+              <div class="spec-meta-col">
+                <div class="meta-row">
+                  <span class="meta-title">VENUE:</span>
+                  <span class="meta-content">Audio-Visual Hall (Digital Center)</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-title">TIMING:</span>
+                  <span class="meta-content">11:00 AM – 01:00 PM</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-title">COORDINATOR:</span>
+                  <span class="meta-content text-yellow">Faculty Coordinator (EEE) / Rajeshwaran G (+91 90427 56321)</span>
+                </div>
+                <div class="spec-card-actions">
+                  <button class="spec-reg-btn electric-btn" data-event-name="Electrical Quiz" type="button">
+                    <span>REGISTER &rarr;</span>
+                  </button>
+                  <button class="spec-details-btn circuit-btn" data-event-id="electrical-quiz" type="button">
+                    <span>View Rules Modal</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- EVENT 4: CIRCUIT CONNECTION -->
+          <article class="event-spec-card tech-spec-card" data-event-id="circuit-connection">
+            <div class="card-circuit-line"></div>
+            <div class="spec-card-header">
+              <div class="spec-header-left">
+                <div class="spec-icon-box">
+                  <svg class="event-spec-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="6" cy="6" r="3" />
+                    <circle cx="18" cy="18" r="3" />
+                    <path d="M6 9v3a3 3 0 0 0 3 3h6a3 3 0 0 0 3 3" />
+                    <circle cx="18" cy="6" r="3" />
+                    <path d="M18 9v3a3 3 0 0 1-3 3H9" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="spec-num-tag">#04 &bull; TECHNICAL</div>
+                  <h3 class="spec-title">Circuit Connection</h3>
+                  <p class="spec-tagline">Breadboard wiring, fault debugging, and oscilloscope verification.</p>
+                </div>
+              </div>
+              <div class="spec-header-right">
+                <span class="spec-badge badge-tech">TECHNICAL</span>
+                <span class="spec-team-badge">👥 2 Members</span>
+              </div>
+            </div>
+
+            <div class="spec-card-body">
+              <div class="spec-info-col">
+                <h4 class="spec-subhead">OVERVIEW</h4>
+                <p class="spec-desc">
+                  Hands-on breadboard and wiring crucible. Identify faulty components, deduce schematic connections, wire the designated circuit, and verify precise oscilloscope outputs.
+                </p>
+                <div class="spec-bullets">
+                  <div class="bullet-item">⚡ Troubleshooting flawed circuit schematics and datasheets.</div>
+                  <div class="bullet-item">⚡ Practical assembly on laboratory breadboards within 30 mins.</div>
+                  <div class="bullet-item">⚡ Evaluated on wiring neatness, speed, and waveform fidelity.</div>
+                </div>
+              </div>
+
+              <div class="spec-meta-col">
+                <div class="meta-row">
+                  <span class="meta-title">VENUE:</span>
+                  <span class="meta-content">Circuits &amp; Devices Laboratory</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-title">TIMING:</span>
+                  <span class="meta-content">02:00 PM – 03:45 PM</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-title">COORDINATOR:</span>
+                  <span class="meta-content text-yellow">Mr. S. Sathish (AP/EEE) / Helpdesk (+91 63828 11745)</span>
+                </div>
+                <div class="spec-card-actions">
+                  <button class="spec-reg-btn electric-btn" data-event-name="Circuit Connection" type="button">
+                    <span>REGISTER &rarr;</span>
+                  </button>
+                  <button class="spec-details-btn circuit-btn" data-event-id="circuit-connection" type="button">
+                    <span>View Rules Modal</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- EVENT 5: REASONING -->
+          <article class="event-spec-card tech-spec-card" data-event-id="reasoning">
+            <div class="card-circuit-line"></div>
+            <div class="spec-card-header">
+              <div class="spec-header-left">
+                <div class="spec-icon-box">
+                  <svg class="event-spec-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-5.04z" />
+                    <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-5.04z" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="spec-num-tag">#05 &bull; TECHNICAL</div>
+                  <h3 class="spec-title">Reasoning</h3>
+                  <p class="spec-tagline">Quantitative logic, analytical deduction, and boolean puzzle solving.</p>
+                </div>
+              </div>
+              <div class="spec-header-right">
+                <span class="spec-badge badge-tech">TECHNICAL</span>
+                <span class="spec-team-badge">👥 1 – 2 Members</span>
+              </div>
+            </div>
+
+            <div class="spec-card-body">
+              <div class="spec-info-col">
+                <h4 class="spec-subhead">OVERVIEW</h4>
+                <p class="spec-desc">
+                  An intellectual sprint measuring analytical aptitude, technical deduction, boolean logic puzzles, sequence patterns, and engineering problem-solving speed.
+                </p>
+                <div class="spec-bullets">
+                  <div class="bullet-item">⚡ 40 questions covering Data Analysis, Logic Gates, and Sequences.</div>
+                  <div class="bullet-item">⚡ Time limit: 45 minutes written/digital challenge.</div>
+                  <div class="bullet-item">⚡ Evaluated on accuracy, logic speed, and analytical deduction.</div>
+                </div>
+              </div>
+
+              <div class="spec-meta-col">
+                <div class="meta-row">
+                  <span class="meta-title">VENUE:</span>
+                  <span class="meta-content">Department Classroom B-102</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-title">TIMING:</span>
+                  <span class="meta-content">02:15 PM – 03:30 PM</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-title">COORDINATOR:</span>
+                  <span class="meta-content text-yellow">Faculty Coordinator (EEE) / Helpdesk (+91 90427 56321)</span>
+                </div>
+                <div class="spec-card-actions">
+                  <button class="spec-reg-btn electric-btn" data-event-name="Reasoning" type="button">
+                    <span>REGISTER &rarr;</span>
+                  </button>
+                  <button class="spec-details-btn circuit-btn" data-event-id="reasoning" type="button">
+                    <span>View Rules Modal</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+        <!-- =====================================================================
+             TRACK 2: NON-TECHNICAL EVENTS CONTAINER
+             ===================================================================== -->
+        <div class="events-deck-container" id="deck-nontechnical">
+          <div class="deck-track-label nontech-track">
+            <span class="track-indicator"></span>
+            <span>NON-TECHNICAL DOMAIN &bull; ELECTRIC YELLOW ACCENT</span>
+          </div>
+
+          <!-- EVENT 6: IPL AUCTION -->
+          <article class="event-spec-card nontech-spec-card" data-event-id="ipl-auction">
+            <div class="card-circuit-line yellow-line"></div>
+            <div class="spec-card-header">
+              <div class="spec-header-left">
+                <div class="spec-icon-box yellow-box">
+                  <svg class="event-spec-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="m14 13-7.5 7.5c-.8.8-2 .8-2.8 0s-.8-2 0-2.8L11 10.2" />
+                    <path d="m16 16 6-6" />
+                    <path d="m8 8 6-6" />
+                    <path d="m9 7 8 8" />
+                    <path d="m21 11-8-8" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="spec-num-tag num-yellow">#06 &bull; NON-TECHNICAL</div>
+                  <h3 class="spec-title">IPL Auction</h3>
+                  <p class="spec-tagline">Virtual cricket franchise bidding, squad strategy, and budget allocation.</p>
+                </div>
+              </div>
+              <div class="spec-header-right">
+                <span class="spec-badge badge-nontech">NON-TECHNICAL</span>
+                <span class="spec-team-badge">👥 2 – 4 Members</span>
+              </div>
+            </div>
+
+            <div class="spec-card-body">
+              <div class="spec-info-col">
+                <h4 class="spec-subhead">OVERVIEW</h4>
+                <p class="spec-desc">
+                  Step into the franchise boardroom. Strategize purse budgets, evaluate player statistics, outbid competitors, and assemble a winning balanced squad.
+                </p>
+                <div class="spec-bullets">
+                  <div class="bullet-item">🎯 Round 1: Cricket Trivia Screening Test.</div>
+                  <div class="bullet-item">🎯 Equal virtual purse budget allocated per franchise.</div>
+                  <div class="bullet-item">🎯 Evaluated on squad rating balance and budget efficiency.</div>
+                </div>
+              </div>
+
+              <div class="spec-meta-col">
+                <div class="meta-row">
+                  <span class="meta-title">VENUE:</span>
+                  <span class="meta-content">Seminar Hall B</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-title">TIMING:</span>
+                  <span class="meta-content">02:00 PM – 04:15 PM</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-title">COORDINATOR:</span>
+                  <span class="meta-content text-yellow">Rajeshwaran G &amp; Vinothini (+91 90427 56321)</span>
+                </div>
+                <div class="spec-card-actions">
+                  <button class="spec-reg-btn electric-btn yellow-btn" data-event-name="IPL Auction" type="button">
+                    <span>REGISTER &rarr;</span>
+                  </button>
+                  <button class="spec-details-btn circuit-btn" data-event-id="ipl-auction" type="button">
+                    <span>View Rules Modal</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- EVENT 7: TWISTED TILES -->
+          <article class="event-spec-card nontech-spec-card" data-event-id="twisted-tiles">
+            <div class="card-circuit-line yellow-line"></div>
+            <div class="spec-card-header">
+              <div class="spec-header-left">
+                <div class="spec-icon-box yellow-box">
+                  <svg class="event-spec-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7" rx="1" />
+                    <rect x="14" y="3" width="7" height="7" rx="1" />
+                    <rect x="14" y="14" width="7" height="7" rx="1" />
+                    <rect x="3" y="14" width="7" height="7" rx="1" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="spec-num-tag num-yellow">#07 &bull; NON-TECHNICAL</div>
+                  <h3 class="spec-title">Twisted Tiles</h3>
+                  <p class="spec-tagline">High-speed visual puzzle solving, spatial sequencing, and tile mechanics.</p>
+                </div>
+              </div>
+              <div class="spec-header-right">
+                <span class="spec-badge badge-nontech">NON-TECHNICAL</span>
+                <span class="spec-team-badge">👥 1 – 2 Members</span>
+              </div>
+            </div>
+
+            <div class="spec-card-body">
+              <div class="spec-info-col">
+                <h4 class="spec-subhead">OVERVIEW</h4>
+                <p class="spec-desc">
+                  A high-velocity spatial coordination challenge. Decode randomized tile grids, reconstruct designated patterns, and test quick ocular recognition under time pressure.
+                </p>
+                <div class="spec-bullets">
+                  <div class="bullet-item">🎯 Reconstruct scrambled visual mosaic within minimum time.</div>
+                  <div class="bullet-item">🎯 Dynamic tile rotation and visual memory recall.</div>
+                  <div class="bullet-item">🎯 Fastest accurate completion wins the championship.</div>
+                </div>
+              </div>
+
+              <div class="spec-meta-col">
+                <div class="meta-row">
+                  <span class="meta-title">VENUE:</span>
+                  <span class="meta-content">EEE Drawing &amp; Design Hall</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-title">TIMING:</span>
+                  <span class="meta-content">02:00 PM – 03:30 PM</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-title">COORDINATOR:</span>
+                  <span class="meta-content text-yellow">Student Helpdesk (+91 63828 11745)</span>
+                </div>
+                <div class="spec-card-actions">
+                  <button class="spec-reg-btn electric-btn yellow-btn" data-event-name="Twisted Tiles" type="button">
+                    <span>REGISTER &rarr;</span>
+                  </button>
+                  <button class="spec-details-btn circuit-btn" data-event-id="twisted-tiles" type="button">
+                    <span>View Rules Modal</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- EVENT 8: YES / NO -->
+          <article class="event-spec-card nontech-spec-card" data-event-id="yes-no">
+            <div class="card-circuit-line yellow-line"></div>
+            <div class="spec-card-header">
+              <div class="spec-header-left">
+                <div class="spec-icon-box yellow-box">
+                  <svg class="event-spec-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                    <path d="m9 10 2 2 4-4" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="spec-num-tag num-yellow">#08 &bull; NON-TECHNICAL</div>
+                  <h3 class="spec-title">Yes / No</h3>
+                  <p class="spec-tagline">The rapid-fire interrogative hot-seat where forbidden words trigger elimination.</p>
+                </div>
+              </div>
+              <div class="spec-header-right">
+                <span class="spec-badge badge-nontech">NON-TECHNICAL</span>
+                <span class="spec-team-badge">👥 1 Member</span>
+              </div>
+            </div>
+
+            <div class="spec-card-body">
+              <div class="spec-info-col">
+                <h4 class="spec-subhead">OVERVIEW</h4>
+                <p class="spec-desc">
+                  The rapid-fire interrogative test! Answer an avalanche of questions without ever uttering the forbidden words "Yes" or "No" or repeating responses.
+                </p>
+                <div class="spec-bullets">
+                  <div class="bullet-item">🎯 2 minutes non-stop rapid fire hot-seat questioning.</div>
+                  <div class="bullet-item">🎯 Uttering "Yes", "No", or head gestures causes instant buzzer.</div>
+                  <div class="bullet-item">🎯 Survivors advance to sudden-death rapid rounds.</div>
+                </div>
+              </div>
+
+              <div class="spec-meta-col">
+                <div class="meta-row">
+                  <span class="meta-title">VENUE:</span>
+                  <span class="meta-content">Open Amphitheatre / Courtyard</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-title">TIMING:</span>
+                  <span class="meta-content">02:30 PM – 04:00 PM</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-title">COORDINATOR:</span>
+                  <span class="meta-content text-yellow">Vinothini &amp; Team (+91 63828 11745)</span>
+                </div>
+                <div class="spec-card-actions">
+                  <button class="spec-reg-btn electric-btn yellow-btn" data-event-name="Yes / No" type="button">
+                    <span>REGISTER &rarr;</span>
+                  </button>
+                  <button class="spec-details-btn circuit-btn" data-event-id="yes-no" type="button">
+                    <span>View Rules Modal</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- EVENT 9: BATTLEGROUND -->
+          <article class="event-spec-card nontech-spec-card" data-event-id="battleground">
+            <div class="card-circuit-line yellow-line"></div>
+            <div class="spec-card-header">
+              <div class="spec-header-left">
+                <div class="spec-icon-box yellow-box">
+                  <svg class="event-spec-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="22" x2="18" y1="12" y2="12" />
+                    <line x1="6" x2="2" y1="12" y2="12" />
+                    <line x1="12" x2="12" y1="6" y2="2" />
+                    <line x1="12" x2="12" y1="22" y2="18" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="spec-num-tag num-yellow">#09 &bull; NON-TECHNICAL</div>
+                  <h3 class="spec-title">Battleground</h3>
+                  <p class="spec-tagline">Mobile tactical esports tournament testing squad synergy and clutch reflexes.</p>
+                </div>
+              </div>
+              <div class="spec-header-right">
+                <span class="spec-badge badge-nontech">NON-TECHNICAL</span>
+                <span class="spec-team-badge">👥 4 Members (Squad)</span>
+              </div>
+            </div>
+
+            <div class="spec-card-body">
+              <div class="spec-info-col">
+                <h4 class="spec-subhead">OVERVIEW</h4>
+                <p class="spec-desc">
+                  An electrifying mobile tactical esports tournament. Squad coordination, spatial tactical awareness, fast reflexes, and clutch execution under tournament rules.
+                </p>
+                <div class="spec-bullets">
+                  <div class="bullet-item">🎯 Mobile devices only (No emulators, triggers, or tablets).</div>
+                  <div class="bullet-item">🎯 Custom tournament room lobbies.</div>
+                  <div class="bullet-item">🎯 Scoring based on placement points + squad kill tally.</div>
+                </div>
+              </div>
+
+              <div class="spec-meta-col">
+                <div class="meta-row">
+                  <span class="meta-title">VENUE:</span>
+                  <span class="meta-content">Smart Classroom Arena (EEE Block)</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-title">TIMING:</span>
+                  <span class="meta-content">02:00 PM – 04:00 PM</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-title">COORDINATOR:</span>
+                  <span class="meta-content text-yellow">Rajeshwaran G (+91 90427 56321)</span>
+                </div>
+                <div class="spec-card-actions">
+                  <button class="spec-reg-btn electric-btn yellow-btn" data-event-name="Battleground" type="button">
+                    <span>REGISTER &rarr;</span>
+                  </button>
+                  <button class="spec-details-btn circuit-btn" data-event-id="battleground" type="button">
+                    <span>View Rules Modal</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- EVENT 10: DUMB-C -->
+          <article class="event-spec-card nontech-spec-card" data-event-id="dumb-c">
+            <div class="card-circuit-line yellow-line"></div>
+            <div class="spec-card-header">
+              <div class="spec-header-left">
+                <div class="spec-icon-box yellow-box">
+                  <svg class="event-spec-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M2 10s3-3 5-3 5 3 5 3-3 3-5 3-5-3-5-3Z" />
+                    <circle cx="7" cy="10" r="1" />
+                    <path d="M12 14s3-3 5-3 5 3 5 3-3 3-5 3-5-3-5-3Z" />
+                    <circle cx="17" cy="14" r="1" />
+                    <path d="M7 16c1.5 2 4.5 2 6 0" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="spec-num-tag num-yellow">#10 &bull; NON-TECHNICAL</div>
+                  <h3 class="spec-title">Dumb-C</h3>
+                  <p class="spec-tagline">Charades and non-verbal communication deciphering technical &amp; cinema clues.</p>
+                </div>
+              </div>
+              <div class="spec-header-right">
+                <span class="spec-badge badge-nontech">NON-TECHNICAL</span>
+                <span class="spec-team-badge">👥 2 – 3 Members</span>
+              </div>
+            </div>
+
+            <div class="spec-card-body">
+              <div class="spec-info-col">
+                <h4 class="spec-subhead">OVERVIEW</h4>
+                <p class="spec-desc">
+                  The ultimate charades test! Decode intricate technical terminologies, popular film titles, and expressions through swift silent enactments and team telepathy.
+                </p>
+                <div class="spec-bullets">
+                  <div class="bullet-item">🎯 Zero vocal sounds or lip-sync movements allowed.</div>
+                  <div class="bullet-item">🎯 Rounds: Technical terms, Cinema &amp; Pop Culture, Mixed Idioms.</div>
+                  <div class="bullet-item">🎯 60 seconds per clue with quick-solve bonus points.</div>
+                </div>
+              </div>
+
+              <div class="spec-meta-col">
+                <div class="meta-row">
+                  <span class="meta-title">VENUE:</span>
+                  <span class="meta-content">Main Auditorium Foyer</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-title">TIMING:</span>
+                  <span class="meta-content">02:00 PM – 03:45 PM</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-title">COORDINATOR:</span>
+                  <span class="meta-content text-yellow">Vinothini &amp; Team (+91 63828 11745)</span>
+                </div>
+                <div class="spec-card-actions">
+                  <button class="spec-reg-btn electric-btn yellow-btn" data-event-name="Dumb-C" type="button">
+                    <span>REGISTER &rarr;</span>
+                  </button>
+                  <button class="spec-details-btn circuit-btn" data-event-id="dumb-c" type="button">
+                    <span>View Rules Modal</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================================================================
+         SECTION 4: REGISTRATION PORTAL (SIMPLE, HIGH CONTRAST)
+         ========================================================================= -->
+    <section id="registration" class="registration-section">
+      <div class="section-container">
+
+        <div class="registration-cta-card">
+          <div class="reg-top-badges">
+            <span class="badge-free-big">⚡ FREE REGISTRATION</span>
+            <span class="badge-alert-big">⚠️ NO ON-SPOT REGISTRATION</span>
+          </div>
+
+          <h2 class="reg-cta-title">ONLINE REGISTRATION IS NOW OPEN</h2>
+
+          <!-- Oscilloscope AC Sine Waveform (Requirement 9) -->
+          <div class="heading-waveform-bar" aria-hidden="true">
+            <span class="hw-line left"></span>
+            <svg class="hw-svg" viewBox="0 0 160 20" preserveAspectRatio="none">
+              <path class="hw-path" d="M0,10 L30,10 Q45,1 60,10 T90,10 T120,10 T150,10 L160,10" />
+              <path class="hw-pulse" d="M0,10 L30,10 Q45,1 60,10 T90,10 T120,10 T150,10 L160,10" />
+            </svg>
+            <span class="hw-freq-tag">ONLINE PORTAL</span>
+            <span class="hw-line right"></span>
+          </div>
+
+          <p class="reg-cta-lead">
+            All participants must register through this online portal before the deadline. There are strictly <strong>NO ON-SPOT REGISTRATIONS</strong> on <strong>23 November 2026</strong>.
+          </p>
+
+          <!-- 4 Simple Clear Steps -->
+          <div class="simple-steps-row">
+            <div class="step-card">
+              <span class="step-card-num">01</span>
+              <h4>Select Events</h4>
+              <p>Pick your Technical and Non-Technical events.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-card-num">02</span>
+              <h4>Enter Details</h4>
+              <p>Provide participant and college information.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-card-num">03</span>
+              <h4>Generate Pass</h4>
+              <p>Receive your official digital Azuretrix pass instantly.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-card-num">04</span>
+              <h4>Attend on 23 Nov</h4>
+              <p>Present pass and college ID at the desk at 8:30 AM.</p>
+            </div>
+          </div>
+
+          <div class="reg-cta-btn-wrap">
+            <button class="reg-big-btn electric-btn" id="open-reg-modal-btn" type="button">
+              <span class="btn-text">OPEN REGISTRATION PORTAL</span>
+              <span class="btn-pill">FREE</span>
+            </button>
+            <p class="reg-portal-url">Official Portal: <a href="https://azuretrix-2k26.github.io" target="_blank" rel="noopener noreferrer">https://azuretrix-2k26.github.io</a></p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================================================================
+         SECTION 5: CONTACT & CONVENERS (CLEAN & DIRECT)
+         ========================================================================= -->
+    <section id="contact" class="contact-section">
+      <div class="section-container">
+
+        <div class="section-heading-box">
+          <div class="section-tag">
+            <span class="tag-dot"></span>
+            <span>COMMUNICATION DESK</span>
+          </div>
+          <h2 class="section-title">ORGANIZING COMMITTEE &amp; CONTACTS</h2>
+
+          <!-- Oscilloscope AC Sine Waveform (Requirement 9) -->
+          <div class="heading-waveform-bar" aria-hidden="true">
+            <span class="hw-line left"></span>
+            <svg class="hw-svg" viewBox="0 0 160 20" preserveAspectRatio="none">
+              <path class="hw-path" d="M0,10 L30,10 Q45,1 60,10 T90,10 T120,10 T150,10 L160,10" />
+              <path class="hw-pulse" d="M0,10 L30,10 Q45,1 60,10 T90,10 T120,10 T150,10 L160,10" />
+            </svg>
+            <span class="hw-freq-tag">EEE HELPDESK</span>
+            <span class="hw-line right"></span>
+          </div>
+
+          <p class="section-desc">Department of Electrical &amp; Electronics Engineering &bull; UCE Arni</p>
+        </div>
+
+        <!-- 3 Clean Profile Cards -->
+        <div class="contact-cards-container">
+          
+          <!-- First Convener -->
+          <div class="contact-card">
+            <span class="contact-role-tag convener-tag">FIRST CONVENER</span>
+            <h3 class="contact-name">Dr. K. Senthil Kumar</h3>
+            <p class="contact-desig">Head of Department (HOD / EEE)</p>
+            <p class="contact-dept">Department of Electrical &amp; Electronics Engineering</p>
+            <p class="contact-inst">University College of Engineering Arni</p>
+          </div>
+
+          <!-- Co-Coordinator -->
+          <div class="contact-card">
+            <span class="contact-role-tag coordinator-tag">CO-COORDINATOR</span>
+            <h3 class="contact-name">Mr. S. Sathish</h3>
+            <p class="contact-desig">Assistant Professor (AP / EEE)</p>
+            <p class="contact-dept">Department of Electrical &amp; Electronics Engineering</p>
+            <p class="contact-inst">University College of Engineering Arni</p>
+          </div>
+
+          <!-- Student Coordinators -->
+          <div class="contact-card student-card">
+            <span class="contact-role-tag student-tag">STUDENT COORDINATORS</span>
+            
+            <div class="student-item">
+              <div>
+                <h4 class="student-name">Rajeshwaran G</h4>
+                <p class="student-title">IV / EEE &bull; President</p>
+              </div>
+              <a href="tel:+919042756321" class="phone-link">+91 90427 56321</a>
+            </div>
+
+            <div class="student-divider"></div>
+
+            <div class="student-item">
+              <div>
+                <h4 class="student-name">Vinothini</h4>
+                <p class="student-title">IV / EEE &bull; Secretary</p>
+              </div>
+              <a href="tel:+916382811745" class="phone-link">+91 63828 11745</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Official Channels & Venue Bar -->
+        <div class="channels-and-venue-row">
+          
+          <div class="channel-card">
+            <h4 class="channel-card-title">OFFICIAL CHANNELS</h4>
+            <div class="channel-item-row">
+              <span class="channel-label">Email:</span>
+              <a href="mailto:azuretrix2k26@gmail.com" class="channel-link">azuretrix2k26@gmail.com</a>
+            </div>
+            <div class="channel-item-row">
+              <span class="channel-label">Instagram:</span>
+              <a href="https://instagram.com/azuretrix2k26" target="_blank" rel="noopener noreferrer" class="channel-link">@azuretrix2k26</a>
+            </div>
+            <div class="channel-item-row">
+              <span class="channel-label">YouTube:</span>
+              <a href="https://youtube.com/@Azuretrix2k26" target="_blank" rel="noopener noreferrer" class="channel-link">Azuretrix2k26</a>
+            </div>
+            <div class="channel-item-row">
+              <span class="channel-label">Helpline:</span>
+              <span class="channel-val">+91 90427 56321 / +91 63828 11745</span>
+            </div>
+          </div>
+
+          <div class="venue-card">
+            <h4 class="channel-card-title">CAMPUS VENUE</h4>
+            <p class="venue-name">University College of Engineering Arni</p>
+            <p class="venue-sub">A Constituent College of Anna University Chennai</p>
+            <p class="venue-addr">Arni to Vellore Road, Thatchur, Arni, Tiruvannamalai District – 632326</p>
+            <a href="https://maps.google.com/?q=University+College+of+Engineering+Arni" target="_blank" rel="noopener noreferrer" class="maps-link circuit-btn">
+              <span>View Location on Google Maps &rarr;</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="main-footer" role="contentinfo">
+    <div class="footer-circuit-bg" aria-hidden="true"></div>
+    <div class="footer-container">
+      <div class="footer-simple-grid">
+        
+        <div class="footer-brand-side">
+          <span class="f-title">AZURETRIX <span class="text-cyan">2K26</span></span>
+          <p class="f-dept">Department of Electrical &amp; Electronics Engineering</p>
+          <p class="f-college">University College of Engineering Arni (Anna University)</p>
+          <div class="f-badges">
+            <span class="f-badge">⚡ 23 NOVEMBER 2026</span>
+            <span class="f-badge">FREE REGISTRATION</span>
+            <span class="f-badge alert">NO ON-SPOT REGISTRATION</span>
+          </div>
+        </div>
+
+        <div class="footer-links-side">
+          <h4 class="f-heading">QUICK LINKS</h4>
+          <ul class="f-links-list">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About Azuretrix</a></li>
+            <li><a href="#events">Events (10)</a></li>
+            <li><a href="#registration">Registration</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact-side">
+          <h4 class="f-heading">CONTACT</h4>
+          <p>Email: <a href="mailto:azuretrix2k26@gmail.com">azuretrix2k26@gmail.com</a></p>
+          <p>Instagram: <a href="https://instagram.com/azuretrix2k26" target="_blank" rel="noopener noreferrer">@azuretrix2k26</a></p>
+          <p>Phone: +91 90427 56321 / +91 63828 11745</p>
+          <p>Portal: <a href="https://azuretrix-2k26.github.io" target="_blank" rel="noopener noreferrer">azuretrix-2k26.github.io</a></p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Department of Electrical &amp; Electronics Engineering, UCE Arni. All Rights Reserved.</p>
+        <p>Powering Tomorrow &bull; Innovate &bull; Explore &bull; Excel</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- =========================================================================
+       MODAL 1: EVENT DETAILS MODAL
+       ========================================================================= -->
+  <div class="modal-backdrop" id="event-details-modal" role="dialog" aria-modal="true" aria-labelledby="modal-event-title" aria-hidden="true">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Modal">&times;</button>
+
+      <div class="modal-header">
+        <div class="modal-badges">
+          <span class="badge-cat" id="modal-event-category">TECHNICAL</span>
+          <span class="modal-team" id="modal-event-teamsize">1 – 4 Members</span>
+        </div>
+        <h3 class="modal-title" id="modal-event-title">EVENT TITLE</h3>
+        <p class="modal-tagline" id="modal-event-tagline">Tagline</p>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-sec">
+          <h4 class="modal-lbl">ABOUT THE EVENT</h4>
+          <p class="modal-txt" id="modal-event-about">Details</p>
+        </div>
+
+        <div class="modal-sec">
+          <h4 class="modal-lbl">RULES &amp; REGULATIONS</h4>
+          <ul class="modal-rules-ul" id="modal-event-rules"></ul>
+        </div>
+
+        <div class="modal-meta-grid">
+          <div class="meta-box">
+            <span class="meta-k">VENUE</span>
+            <span class="meta-v" id="modal-event-venue">Lab</span>
+          </div>
+          <div class="meta-box">
+            <span class="meta-k">TIMING</span>
+            <span class="meta-v" id="modal-event-timing">23 Nov 2026</span>
+          </div>
+        </div>
+
+        <div class="modal-sec">
+          <h4 class="modal-lbl">COORDINATORS</h4>
+          <p class="modal-txt text-highlight" id="modal-event-coordinators">Coordinators</p>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <div class="modal-footer-notice">
+          <span>⚡ FREE REGISTRATION &bull; ⚠️ NO ON-SPOT REGISTRATION</span>
+        </div>
+        <div class="modal-footer-btns">
+          <button class="circuit-btn" id="modal-prev-btn" type="button">&larr; Prev</button>
+          <button class="circuit-btn" id="modal-next-btn" type="button">Next &rarr;</button>
+          <button class="electric-btn" id="modal-register-btn" type="button">
+            <span>REGISTER FOR THIS EVENT</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =========================================================================
+       MODAL 2: REGISTRATION FORM & DIGITAL PASS MODAL
+       ========================================================================= -->
+  <div class="modal-backdrop" id="registration-modal" role="dialog" aria-modal="true" aria-labelledby="reg-modal-title" aria-hidden="true">
+    <div class="modal-dialog reg-dialog">
+      <button class="modal-close-btn" id="reg-modal-close-btn" aria-label="Close Registration">&times;</button>
+
+      <div class="modal-header">
+        <div class="modal-badges">
+          <span class="badge-cat badge-tech">OFFICIAL REGISTRATION PORTAL</span>
+          <span class="tag-free">100% FREE</span>
+        </div>
+        <h3 class="modal-title" id="reg-modal-title">AZURETRIX 2K26 REGISTRATION</h3>
+        <p class="modal-tagline">Department of EEE, UCE Arni &bull; 23 November 2026</p>
+        <div class="modal-alert-box">
+          <strong>IMPORTANT MANDATE:</strong> NO ON-SPOT REGISTRATION. Fill this form to secure your entry pass.
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <form id="azuretrix-reg-form" class="reg-form" novalidate>
+
+          <div class="form-sec-head">01. PARTICIPANT INFORMATION</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="reg-name">Full Name <span class="req">*</span></label>
+              <input type="text" id="reg-name" name="name" class="form-control" placeholder="e.g. Arun Kumar" required>
+            </div>
+            <div class="form-group">
+              <label for="reg-email">Email Address <span class="req">*</span></label>
+              <input type="email" id="reg-email" name="email" class="form-control" placeholder="arun@example.com" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="reg-phone">WhatsApp Number <span class="req">*</span></label>
+              <input type="tel" id="reg-phone" name="phone" class="form-control" placeholder="+91 98765 43210" required>
+            </div>
+            <div class="form-group">
+              <label for="reg-year">Year of Study <span class="req">*</span></label>
+              <select id="reg-year" name="year" class="form-control" required>
+                <option value="" disabled selected>Select Year</option>
+                <option value="I Year">I Year B.E. / B.Tech</option>
+                <option value="II Year">II Year B.E. / B.Tech</option>
+                <option value="III Year">III Year B.E. / B.Tech</option>
+                <option value="IV Year">IV Year B.E. / B.Tech</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="reg-college">College / Institution <span class="req">*</span></label>
+              <input type="text" id="reg-college" name="college" class="form-control" placeholder="College Name" required>
+            </div>
+            <div class="form-group">
+              <label for="reg-dept">Department / Branch <span class="req">*</span></label>
+              <input type="text" id="reg-dept" name="department" class="form-control" placeholder="e.g. EEE, ECE, Mech" required>
+            </div>
+          </div>
+
+          <div class="form-sec-head">02. SELECT EVENTS TO PARTICIPATE IN</div>
+          <div class="event-checkbox-grid">
+            
+            <div class="checkbox-col">
+              <div class="col-title tech-color">TECHNICAL EVENTS</div>
+              <label class="custom-cb">
+                <input type="checkbox" name="events" value="Project Expo" id="check-project-expo">
+                <span class="cb-box"></span>
+                <span><strong>Project Expo</strong> (1–4 members)</span>
+              </label>
+              <label class="custom-cb">
+                <input type="checkbox" name="events" value="Tech Takk" id="check-tech-takk">
+                <span class="cb-box"></span>
+                <span><strong>Tech Takk</strong> (1–3 members)</span>
+              </label>
+              <label class="custom-cb">
+                <input type="checkbox" name="events" value="Electrical Quiz" id="check-electrical-quiz">
+                <span class="cb-box"></span>
+                <span><strong>Electrical Quiz</strong> (2 members)</span>
+              </label>
+              <label class="custom-cb">
+                <input type="checkbox" name="events" value="Circuit Connection" id="check-circuit-connection">
+                <span class="cb-box"></span>
+                <span><strong>Circuit Connection</strong> (2 members)</span>
+              </label>
+              <label class="custom-cb">
+                <input type="checkbox" name="events" value="Reasoning" id="check-reasoning">
+                <span class="cb-box"></span>
+                <span><strong>Reasoning</strong> (1–2 members)</span>
+              </label>
+            </div>
+
+            <div class="checkbox-col">
+              <div class="col-title nontech-color">NON-TECHNICAL EVENTS</div>
+              <label class="custom-cb">
+                <input type="checkbox" name="events" value="IPL Auction" id="check-ipl-auction">
+                <span class="cb-box"></span>
+                <span><strong>IPL Auction</strong> (2–4 members)</span>
+              </label>
+              <label class="custom-cb">
+                <input type="checkbox" name="events" value="Twisted Tiles" id="check-twisted-tiles">
+                <span class="cb-box"></span>
+                <span><strong>Twisted Tiles</strong> (1–2 members)</span>
+              </label>
+              <label class="custom-cb">
+                <input type="checkbox" name="events" value="Yes / No" id="check-yes-no">
+                <span class="cb-box"></span>
+                <span><strong>Yes / No</strong> (1 member)</span>
+              </label>
+              <label class="custom-cb">
+                <input type="checkbox" name="events" value="Battleground" id="check-battleground">
+                <span class="cb-box"></span>
+                <span><strong>Battleground</strong> (4 members)</span>
+              </label>
+              <label class="custom-cb">
+                <input type="checkbox" name="events" value="Dumb-C" id="check-dumb-c">
+                <span class="cb-box"></span>
+                <span><strong>Dumb-C</strong> (2–3 members)</span>
+              </label>
+            </div>
+
+          </div>
+
+          <div class="form-sec-head">03. TEAM MEMBERS (OPTIONAL)</div>
+          <div class="form-group">
+            <textarea id="reg-teammates" name="teammates" class="form-control" rows="2" placeholder="List teammate names and contacts if participating in group events"></textarea>
+          </div>
+
+          <div class="form-agree-box">
+            <label class="custom-cb">
+              <input type="checkbox" id="reg-agree" required>
+              <span class="cb-box"></span>
+              <span>I confirm all details are accurate and acknowledge that <strong>NO ON-SPOT REGISTRATION</strong> will be allowed on 23 November 2026.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="electric-btn submit-btn" id="submit-reg-btn">
+            <span>CONFIRM &amp; GENERATE PASS &rarr;</span>
+          </button>
+        </form>
+
+        <!-- Digital Pass Card upon Submission -->
+        <div class="reg-success-view" id="reg-success-card" style="display:none;">
+          <div class="success-icon">✓</div>
+          <h3 class="success-heading">REGISTRATION CONFIRMED!</h3>
+          <p class="success-sub">Your digital entry pass for Azuretrix 2K26 has been generated.</p>
+
+          <div class="pass-ticket" id="digital-pass-print">
+            <div class="pass-top">
+              <span class="pass-head">AZURETRIX 2K26 PASS</span>
+              <span class="pass-tag">FREE REGISTRATION</span>
+            </div>
+            <div class="pass-content">
+              <div class="pass-line"><span class="pk">PASS ID:</span> <span class="pv text-cyan" id="pass-id-val">AZX-2026-XXXX</span></div>
+              <div class="pass-line"><span class="pk">PARTICIPANT:</span> <span class="pv" id="pass-name-val">-</span></div>
+              <div class="pass-line"><span class="pk">COLLEGE:</span> <span class="pv" id="pass-college-val">-</span></div>
+              <div class="pass-line"><span class="pk">EVENTS:</span> <span class="pv" id="pass-events-val">-</span></div>
+              <div class="pass-line"><span class="pk">DATE &amp; VENUE:</span> <span class="pv">23 November 2026 &bull; UCE Arni</span></div>
+            </div>
+            <div class="pass-bottom">⚠️ SHOW THIS PASS &amp; COLLEGE ID AT DESK ON 23 NOV 2026</div>
+          </div>
+
+          <div class="pass-actions">
+            <button class="circuit-btn" id="print-pass-btn" type="button">Print / Save Pass</button>
+            <button class="electric-btn" id="close-success-btn" type="button">Done &amp; Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- JAVASCRIPT ENGINE -->
+  <script src="script.js"></script>
+</body>
+</html>
