@@ -126,7 +126,7 @@
         </button>
 
         <!-- Mobile Toggle Button -->
-        <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Open Navigation" aria-expanded="false">
+        <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
           <span class="toggle-bar"></span>
           <span class="toggle-bar"></span>
           <span class="toggle-bar"></span>
@@ -135,18 +135,23 @@
 
     </div>
 
+    <!-- Mobile Menu Backdrop Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay" aria-hidden="true"></div>
+
     <!-- Mobile Drawer Navigation -->
-    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile Navigation" aria-hidden="true">
       <div class="mobile-menu-header">
         <span class="mobile-brand">AZURETRIX <span class="text-purple">2K26</span></span>
-        <button class="mobile-close-btn" id="mobile-close-btn" aria-label="Close Navigation">&times;</button>
+        <button class="mobile-close-btn" id="mobile-close-btn" aria-label="Close Navigation Menu" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <ul class="mobile-nav-links">
-        <li><a href="#hero" class="mobile-link">HOME</a></li>
-        <li><a href="#about" class="mobile-link">ABOUT SYMPOSIUM</a></li>
-        <li><a href="#events" class="mobile-link">ALL 10 EVENTS</a></li>
-        <li><a href="#events" class="mobile-link" id="mobile-reg-link">REGISTER FOR EVENTS</a></li>
-        <li><a href="#contact" class="mobile-link">ORGANIZING COMMITTEE</a></li>
+        <li><a href="#hero" class="mobile-link"><span class="m-link-icon">⚡</span> HOME</a></li>
+        <li><a href="#about" class="mobile-link"><span class="m-link-icon">ℹ️</span> ABOUT SYMPOSIUM</a></li>
+        <li><a href="#events" class="mobile-link"><span class="m-link-icon">🎯</span> ALL 10 EVENTS</a></li>
+        <li><a href="#events" class="mobile-link" id="mobile-reg-link"><span class="m-link-icon">📝</span> REGISTER FOR EVENTS</a></li>
+        <li><a href="#contact" class="mobile-link"><span class="m-link-icon">👥</span> ORGANIZING COMMITTEE</a></li>
       </ul>
       <div class="mobile-menu-footer">
         <div class="mobile-tags">
@@ -157,7 +162,7 @@
           <span class="btn-text">REGISTER NOW &rarr;</span>
         </button>
       </div>
-    </div>
+    </nav>
   </header>
 
   <!-- MAIN PAGE CONTENT -->
