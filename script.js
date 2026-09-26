@@ -242,14 +242,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 5 TECHNICAL EVENTS ---
     'project-expo': {
       id: 'project-expo',
-      title: 'Project Expo',
+      title: 'ElectroXpo - Project Expo',
       category: 'TECHNICAL',
       tagline: 'Innovative, technical, and functional hardware/prototype showcase.',
       teamSize: '1 – 3 Participants per Team (Max 3)',
       venue: 'TBA',
       timing: 'TBA',
       formUrl: 'https://forms.gle/9D25BUJpeeqb2mnB6',
-      about: 'Project Expo offers a premier stage for students to showcase innovative, technical, and functional engineering projects. Participants demonstrate their working models or prototypes to judges, explaining the problem statement, objectives, and practical engineering solutions.',
+      about: 'ElectroXpo - Project Expo offers a premier stage for students to showcase innovative, technical, and functional engineering projects. Participants demonstrate their working models or prototypes to judges, explaining the problem statement, objectives, and practical engineering solutions.',
       rules: [
         'Each team can have a maximum of 3 participants.',
         'The project must be technical, innovative, and functional.',
@@ -293,14 +293,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     'electrical-quiz': {
       id: 'electrical-quiz',
-      title: 'Electrical Quiz',
+      title: 'VoltIQ - Electrical Quiz',
       category: 'TECHNICAL',
       tagline: 'Multi-round technical challenge across electrical, electronics, IoT & technology.',
       teamSize: 'Teams of 2–3 participants',
       venue: 'TBA',
       timing: 'TBA',
       formUrl: 'https://forms.gle/p9wSTWrmBbdNZTvz5',
-      about: 'The Electrical Quiz is an exhilarating battle of technical acumen and engineering intellect. Spanning multiple competitive rounds, teams test their grasp of fundamental concepts, electrical and electronics engineering, recent technologies, IoT, programming, and general technology.',
+      about: 'VoltIQ - Electrical Quiz is an exhilarating battle of technical acumen and engineering intellect. Spanning multiple competitive rounds, teams test their grasp of fundamental concepts, electrical and electronics engineering, recent technologies, IoT, programming, and general technology.',
       rules: [
         'The quiz will be conducted in teams of 2–3 participants.',
         'Participants must register before the event and report to the venue on time.',
@@ -318,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     'circuit-connection': {
       id: 'circuit-connection',
-      title: 'Circuit Connection',
+      title: 'Wire & Fire - Circuit Connection',
       category: 'TECHNICAL',
       tagline: 'Breadboard wiring, fault debugging, and oscilloscope verification.',
       teamSize: '2 Participants per Team',
@@ -348,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     'reasoning': {
       id: 'reasoning',
-      title: 'Reasoning',
+      title: 'MindSparK - Reasoning',
       category: 'TECHNICAL',
       tagline: 'Quantitative logic, analytical deduction, and boolean puzzle solving.',
       teamSize: '1 – 2 Participants per Team',

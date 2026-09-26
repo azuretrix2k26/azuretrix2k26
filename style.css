@@ -1481,12 +1481,104 @@ button {
   padding: 24px 20px;
   box-shadow: var(--shadow-xs);
   transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  display: flex;
+  flex-direction: column;
 }
 
 .contact-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   border-color: var(--color-purple);
-  box-shadow: 0 8px 24px rgba(220, 38, 38, 0.08);
+  box-shadow: 0 10px 28px rgba(220, 38, 38, 0.12);
+}
+
+/* Coordinator Profile Avatar / Image Frame */
+.contact-avatar-wrap {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+  background: #F4F4F5;
+  border: 3px solid #FFFFFF;
+  box-shadow: 0 0 0 1.5px var(--border-neutral), var(--shadow-sm);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  flex-shrink: 0;
+}
+
+.contact-card:hover .contact-avatar-wrap {
+  transform: scale(1.04);
+  box-shadow: 0 0 0 2.5px var(--color-purple), 0 8px 22px rgba(220, 38, 38, 0.22);
+}
+
+.contact-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  transform: scale(1.06);
+  transition: transform var(--transition-normal);
+}
+
+.contact-card:hover .contact-avatar-img {
+  transform: scale(1.12);
+}
+
+/* Individual Face Centering Fine-Tuning */
+.avatar-pos-deepa {
+  object-position: center 15%;
+}
+.avatar-pos-senthil {
+  object-position: center 20%;
+}
+.avatar-pos-sathish {
+  object-position: center 18%;
+}
+.avatar-pos-vijisri {
+  object-position: center 18%;
+}
+.avatar-pos-kumudhini {
+  object-position: center 18%;
+}
+.avatar-pos-rajeswaran {
+  object-position: center 15%;
+}
+.avatar-pos-vinodhini {
+  object-position: center 18%;
+}
+
+/* Chairperson Dean Placeholder Badge */
+.contact-avatar-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #FFF5F5 0%, #FEE2E2 100%);
+  border: 3px solid #FFFFFF;
+  box-shadow: 0 0 0 1.5px var(--border-neutral-light), 0 4px 12px rgba(220, 38, 38, 0.08);
+}
+
+.avatar-placeholder-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  user-select: none;
+}
+
+.placeholder-dean-icon {
+  width: 32px;
+  height: 32px;
+  stroke: var(--color-purple);
+}
+
+.placeholder-initials {
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--color-purple);
 }
 
 .contact-role-tag {
@@ -1573,6 +1665,110 @@ button {
   height: 1px;
   background: var(--border-neutral-light);
   margin: 12px 0;
+}
+
+/* Student Coordinators Sub-Section */
+.student-coords-subheading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 8px 0 22px 0;
+}
+
+.student-coords-subheading .student-subtag {
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.student-subheading-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-neutral);
+}
+
+.student-grid-two {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 36px;
+}
+
+@media (max-width: 640px) {
+  .student-grid-two {
+    grid-template-columns: 1fr;
+  }
+}
+
+.student-coord-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.student-coord-inner {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  width: 100%;
+}
+
+.student-coord-inner .student-avatar-wrap {
+  width: 108px;
+  height: 108px;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.student-coord-info {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 640px) {
+  .student-coord-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .student-coord-inner .student-avatar-wrap {
+    margin-bottom: 4px;
+  }
+}
+
+.student-coord-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap: 8px;
+}
+
+.student-coord-top .contact-role-tag {
+  margin-bottom: 0;
+}
+
+.coord-badge-pill {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--color-purple);
+  color: #FFFFFF;
+  display: inline-block;
+}
+
+.student-card-phone {
+  margin-top: 14px;
+}
+
+.student-card-phone .phone-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  padding: 6px 14px;
 }
 
 /* Channels & Venue Row */
