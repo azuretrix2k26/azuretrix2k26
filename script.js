@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================================================== */
   const titleBox = document.getElementById('hero-title-box');
   const clashCanvas = document.getElementById('thunder-clash-canvas');
+  const burstLayer = document.getElementById('thunder-burst-layer');
   const impactFlash = document.getElementById('thunder-impact-flash');
   const shockwave = document.getElementById('thunder-shockwave');
   const revealTitle = document.getElementById('hero-main-title');
@@ -70,36 +71,49 @@ document.addEventListener('DOMContentLoaded', () => {
       return points;
     }
 
-    // Draw a single branching lightning strike
+    // Draw a single branching lightning strike (Harmonized with Golden Thunder Image)
     function drawLightningBolt(points, alpha = 1, branches = true) {
       if (!points || points.length < 2) return;
 
-      // 1. Outer Cyan Electrical Aura
       ctx.save();
+
+      // 1. Outer Golden Electrical Aura
       ctx.beginPath();
       ctx.moveTo(points[0].x, points[0].y);
       for (let i = 1; i < points.length; i++) {
         ctx.lineTo(points[i].x, points[i].y);
       }
-      ctx.strokeStyle = `rgba(56, 189, 248, ${0.85 * alpha})`;
-      ctx.lineWidth = 4;
-      ctx.shadowColor = '#00E5FF';
+      ctx.strokeStyle = `rgba(245, 158, 11, ${0.9 * alpha})`;
+      ctx.lineWidth = 4.5;
+      ctx.shadowColor = '#FBBF24';
       ctx.shadowBlur = 18;
       ctx.stroke();
 
-      // 2. Inner White-Hot Core
+      // 2. Mid Amber/Cyan Flash
       ctx.beginPath();
       ctx.moveTo(points[0].x, points[0].y);
       for (let i = 1; i < points.length; i++) {
         ctx.lineTo(points[i].x, points[i].y);
       }
-      ctx.strokeStyle = `rgba(255, 255, 255, ${0.95 * alpha})`;
-      ctx.lineWidth = 1.8;
-      ctx.shadowColor = '#FFFFFF';
-      ctx.shadowBlur = 8;
+      ctx.strokeStyle = `rgba(254, 240, 138, ${0.95 * alpha})`;
+      ctx.lineWidth = 2.4;
+      ctx.shadowColor = '#FACC15';
+      ctx.shadowBlur = 10;
       ctx.stroke();
 
-      // 3. Realistic Forking Side Branches
+      // 3. Inner White-Hot Core
+      ctx.beginPath();
+      ctx.moveTo(points[0].x, points[0].y);
+      for (let i = 1; i < points.length; i++) {
+        ctx.lineTo(points[i].x, points[i].y);
+      }
+      ctx.strokeStyle = `rgba(255, 255, 255, ${0.98 * alpha})`;
+      ctx.lineWidth = 1.6;
+      ctx.shadowColor = '#FFFFFF';
+      ctx.shadowBlur = 6;
+      ctx.stroke();
+
+      // 4. Realistic Forking Side Branches
       if (branches && points.length > 6) {
         const branchCount = Math.floor(points.length / 5);
         for (let b = 0; b < branchCount; b++) {
@@ -116,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
           for (let k = 1; k < branchPoints.length; k++) {
             ctx.lineTo(branchPoints[k].x, branchPoints[k].y);
           }
-          ctx.strokeStyle = `rgba(56, 189, 248, ${0.5 * alpha})`;
+          ctx.strokeStyle = `rgba(251, 191, 36, ${0.65 * alpha})`;
           ctx.lineWidth = 1.2;
           ctx.stroke();
         }
@@ -126,19 +140,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Spark Particles for Collision Explosion
     let sparks = [];
-    function spawnCollisionSparks(cx, cy, count = 35) {
+    function spawnCollisionSparks(cx, cy, count = 42) {
       for (let i = 0; i < count; i++) {
         const angle = Math.random() * Math.PI * 2;
-        const speed = 2 + Math.random() * 7;
+        const speed = 2 + Math.random() * 7.5;
         sparks.push({
           x: cx,
           y: cy,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
-          size: 1.5 + Math.random() * 2.5,
+          size: 1.5 + Math.random() * 2.8,
           life: 1,
           decay: 0.02 + Math.random() * 0.03,
-          color: Math.random() < 0.6 ? '#38BDF8' : (Math.random() < 0.85 ? '#FFFFFF' : '#F59E0B')
+          color: Math.random() < 0.5 ? '#FACC15' : (Math.random() < 0.8 ? '#FFFFFF' : '#EF4444')
         });
       }
     }
@@ -150,6 +164,13 @@ document.addEventListener('DOMContentLoaded', () => {
       resizeCanvas();
       if (animFrame) cancelAnimationFrame(animFrame);
 
+      // Trigger Golden Thunder Burst Image Layer
+      if (burstLayer) {
+        burstLayer.classList.remove('burst-active');
+        void burstLayer.offsetWidth; // force reflow
+        burstLayer.classList.add('burst-active');
+      }
+
       // Reset animation classes
       revealTitle.classList.remove('thunder-struck', 'strike-surge');
       if (impactFlash) impactFlash.classList.remove('flash-active');
@@ -158,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const startTime = performance.now();
       const strikeDuration = 600; // 600ms attack time
-      const totalDuration = 1100; // 1.1s total effect time
+      const totalDuration = 1150; // 1.15s total effect time
       let hasCollided = false;
 
       function renderFrame(now) {
@@ -194,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.beginPath();
             ctx.arc((tipX1 + tipX2) / 2, (tipY1 + tipY2) / 2, 4 + Math.random() * 6, 0, Math.PI * 2);
             ctx.fillStyle = '#FFFFFF';
-            ctx.shadowColor = '#38BDF8';
+            ctx.shadowColor = '#FDE047';
             ctx.shadowBlur = 14;
             ctx.fill();
             ctx.shadowBlur = 0;
@@ -219,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
             revealTitle.classList.add('thunder-struck', 'strike-surge');
 
             // Spawn collision spark explosion
-            spawnCollisionSparks(cx, cy, 40);
+            spawnCollisionSparks(cx, cy, 45);
           }
 
           // Residual crackling lightning dissipating
