@@ -9,44 +9,161 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ==========================================================================
-     1. High-Tech EEE Loading Screen Engine
+     1. AZURETRIX 2⚡26 Electric Lightning Reveal Opening Engine
      ========================================================================== */
   const loaderScreen = document.getElementById('loader-screen');
   const loaderProgressFill = document.getElementById('loader-progress-fill');
+  const loaderBarSpark = document.getElementById('loader-bar-spark');
   const loaderStatusText = document.getElementById('loader-status-text');
   const loaderPercent = document.getElementById('loader-percent');
   const skipLoaderBtn = document.getElementById('skip-loader-btn');
+  const revealFlashFx = document.getElementById('reveal-flash-fx');
+  const sparksCanvas = document.getElementById('reveal-sparks-canvas');
 
   let loadProgress = 0;
   let loaderDismissed = false;
+  let sparksAnimId = null;
 
   const statusMessages = [
-    { threshold: 20, text: 'INITIALIZING POWER GRID...' },
-    { threshold: 45, text: 'SYNCHRONIZING CIRCUIT NODES...' },
-    { threshold: 75, text: 'CALIBRATING 50.0 Hz FREQUENCY...' },
-    { threshold: 92, text: 'CHARGING CAPACITOR BANKS...' },
-    { threshold: 100, text: 'GRID ONLINE & READY!' }
+    { threshold: 22, text: 'INITIALIZING HIGH-VOLTAGE COILS...' },
+    { threshold: 48, text: 'CHARGING CAPACITOR MATRIX...' },
+    { threshold: 72, text: 'SYNCHRONIZING 50.0 Hz FREQUENCY...' },
+    { threshold: 92, text: 'IGNITING ELECTRIC LIGHTNING STRIKE...' },
+    { threshold: 100, text: '⚡ AZURETRIX 2⚡26 ENERGIZED!' }
   ];
+
+  // Dynamic Lightning Sparks Generator on Reveal Canvas
+  if (sparksCanvas) {
+    const sCtx = sparksCanvas.getContext('2d');
+    let sWidth = (sparksCanvas.width = window.innerWidth);
+    let sHeight = (sparksCanvas.height = window.innerHeight);
+
+    window.addEventListener('resize', () => {
+      if (loaderDismissed) return;
+      sWidth = sparksCanvas.width = window.innerWidth;
+      sHeight = sparksCanvas.height = window.innerHeight;
+    });
+
+    const sparks = [];
+    const maxSparks = 35;
+
+    function createSpark() {
+      // Emanate near center lightning collision
+      const centerX = sWidth * 0.5 + (Math.random() - 0.5) * 60;
+      const centerY = sHeight * 0.5 + (Math.random() - 0.5) * 40;
+      const angle = Math.random() * Math.PI * 2;
+      const speed = 1.5 + Math.random() * 4.5;
+
+      return {
+        x: centerX,
+        y: centerY,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        size: 1.2 + Math.random() * 2.2,
+        life: 1,
+        decay: 0.015 + Math.random() * 0.03,
+        color: Math.random() < 0.6 ? '#38BDF8' : (Math.random() < 0.85 ? '#FFFFFF' : '#FDE047')
+      };
+    }
+
+    function renderSparks() {
+      if (loaderDismissed) return;
+      sCtx.clearRect(0, 0, sWidth, sHeight);
+
+      // Random micro-lightning filament
+      if (Math.random() < 0.3) {
+        const startX = sWidth * 0.5 + (Math.random() - 0.5) * 80;
+        const startY = sHeight * 0.5 + (Math.random() - 0.5) * 60;
+        let curX = startX;
+        let curY = startY;
+
+        sCtx.beginPath();
+        sCtx.moveTo(curX, curY);
+        const segments = 4 + Math.floor(Math.random() * 5);
+        for (let s = 0; s < segments; s++) {
+          curX += (Math.random() - 0.5) * 35;
+          curY += (Math.random() - 0.5) * 35;
+          sCtx.lineTo(curX, curY);
+        }
+        sCtx.strokeStyle = Math.random() < 0.5 ? 'rgba(255, 255, 255, 0.8)' : 'rgba(56, 189, 248, 0.7)';
+        sCtx.lineWidth = 1 + Math.random() * 1.5;
+        sCtx.shadowColor = '#38BDF8';
+        sCtx.shadowBlur = 12;
+        sCtx.stroke();
+        sCtx.shadowBlur = 0;
+      }
+
+      // Update & render particles
+      while (sparks.length < maxSparks) {
+        sparks.push(createSpark());
+      }
+
+      for (let i = sparks.length - 1; i >= 0; i--) {
+        const sp = sparks[i];
+        sp.x += sp.vx;
+        sp.y += sp.vy;
+        sp.life -= sp.decay;
+
+        if (sp.life <= 0) {
+          sparks.splice(i, 1);
+          continue;
+        }
+
+        sCtx.beginPath();
+        sCtx.arc(sp.x, sp.y, sp.size * sp.life, 0, Math.PI * 2);
+        sCtx.fillStyle = sp.color;
+        sCtx.globalAlpha = sp.life;
+        sCtx.shadowColor = sp.color;
+        sCtx.shadowBlur = 8;
+        sCtx.fill();
+        sCtx.globalAlpha = 1;
+        sCtx.shadowBlur = 0;
+      }
+
+      sparksAnimId = requestAnimationFrame(renderSparks);
+    }
+
+    sparksAnimId = requestAnimationFrame(renderSparks);
+  }
 
   function dismissLoader() {
     if (loaderDismissed || !loaderScreen) return;
     loaderDismissed = true;
-    loaderScreen.classList.add('fade-out');
-    document.body.style.overflow = '';
+
+    if (sparksAnimId) {
+      cancelAnimationFrame(sparksAnimId);
+      sparksAnimId = null;
+    }
+
+    // Trigger final energetic shockwave flash
+    if (revealFlashFx) {
+      revealFlashFx.style.transition = 'opacity 0.2s ease';
+      revealFlashFx.style.opacity = '1';
+    }
+
+    setTimeout(() => {
+      loaderScreen.classList.add('fade-out');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        if (loaderScreen) loaderScreen.style.display = 'none';
+      }, 750);
+    }, 200);
   }
 
-  // Prevent scroll during loader
+  // Prevent scroll during reveal animation
   if (loaderScreen && !loaderDismissed) {
     document.body.style.overflow = 'hidden';
 
+    // Cinematic progress progression (~2.2 seconds)
     const loadInterval = setInterval(() => {
-      loadProgress += Math.floor(Math.random() * 9) + 5;
+      loadProgress += Math.floor(Math.random() * 8) + 4;
       if (loadProgress >= 100) {
         loadProgress = 100;
         clearInterval(loadInterval);
       }
 
       if (loaderProgressFill) loaderProgressFill.style.width = `${loadProgress}%`;
+      if (loaderBarSpark) loaderBarSpark.style.left = `${loadProgress}%`;
       if (loaderPercent) loaderPercent.textContent = `${loadProgress}%`;
 
       // Status text progression
@@ -56,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (loadProgress === 100) {
-        setTimeout(dismissLoader, 350);
+        setTimeout(dismissLoader, 420);
       }
     }, 45);
 

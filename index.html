@@ -31,44 +31,88 @@
 
 <body class="eee-body">
 
-  <!-- HIGH-TECH EEE POWER-UP LOADING SCREEN -->
-  <div id="loader-screen" class="loader-screen" aria-label="Loading Azuretrix 2K26">
-    <div class="loader-box">
-      <!-- High Voltage Insignia -->
-      <div class="loader-emblem">
-        <svg class="loader-emblem-svg" viewBox="0 0 100 100" fill="none">
-          <polygon points="50,4 92,25 92,72 50,96 8,72 8,25" stroke="#DC2626" stroke-width="2.5"
-            class="loader-hex-outer" />
-          <polygon points="50,14 82,31 82,68 50,86 18,68 18,31" stroke="#EF4444" stroke-width="1.8"
-            stroke-dasharray="6 3" class="loader-hex-inner" />
-          <path d="M52,18 L38,48 L50,48 L44,80 L64,44 L50,44 L54,18 Z" fill="url(#loaderBoltGrad)"
-            class="loader-bolt" />
-          <circle cx="50" cy="50" r="42" stroke="rgba(220, 38, 38, 0.25)" stroke-width="1.5"
-            class="loader-pulse-ring" />
-          <defs>
-            <linearGradient id="loaderBoltGrad" x1="38" y1="18" x2="64" y2="80" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#DC2626" />
-              <stop offset="100%" stop-color="#B91C1C" />
-            </linearGradient>
-          </defs>
-        </svg>
+  <!-- AZURETRIX 2⚡26 ELECTRIC LIGHTNING REVEAL INTRO SCREEN -->
+  <div id="loader-screen" class="reveal-screen" aria-label="AZURETRIX 2⚡26 Opening Reveal">
+    <!-- Lightning Background Layer (Using uploaded image) -->
+    <div class="reveal-bg-layer" aria-hidden="true"></div>
+    <div class="reveal-flash-fx" id="reveal-flash-fx" aria-hidden="true"></div>
+    <div class="reveal-vignette" aria-hidden="true"></div>
+    <canvas id="reveal-sparks-canvas" class="reveal-sparks-canvas" aria-hidden="true"></canvas>
+
+    <!-- Central High Voltage Reveal Stage -->
+    <div class="reveal-stage">
+      
+      <!-- College & Department Line -->
+      <div class="reveal-dept-badge">
+        <span class="reveal-bolt-icon">⚡</span>
+        <span class="reveal-dept-text">UCE ARNI &bull; DEPT OF ELECTRICAL &amp; ELECTRONICS ENGINEERING</span>
       </div>
 
-      <h2 class="loader-title">AZURETRIX <span class="text-purple">2K26</span></h2>
-      <p class="loader-dept">DEPT OF ELECTRICAL &amp; ELECTRONICS ENGINEERING</p>
-      <p class="loader-college">University College of Engineering Arni</p>
+      <!-- Main Title Reveal: AZURETRIX 2⚡26 -->
+      <div class="reveal-title-container">
+        <!-- Radial Core Glow behind the title -->
+        <div class="reveal-core-glow" aria-hidden="true"></div>
+        <div class="reveal-shockwave-ring" aria-hidden="true"></div>
 
-      <!-- Digital Progress Bar -->
-      <div class="loader-progress-track">
-        <div class="loader-progress-fill" id="loader-progress-fill"></div>
+        <h1 class="reveal-name-title" aria-label="AZURETRIX 2⚡26">
+          <span class="reveal-word azuretrix-word">
+            <span class="r-char" style="--i:0">A</span>
+            <span class="r-char" style="--i:1">Z</span>
+            <span class="r-char" style="--i:2">U</span>
+            <span class="r-char" style="--i:3">R</span>
+            <span class="r-char" style="--i:4">E</span>
+            <span class="r-char" style="--i:5">T</span>
+            <span class="r-char" style="--i:6">R</span>
+            <span class="r-char" style="--i:7">I</span>
+            <span class="r-char" style="--i:8">X</span>
+          </span>
+          <span class="reveal-word year-word">
+            <span class="r-char year-num" style="--i:9">2</span>
+            <span class="r-bolt-wrap" style="--i:10" title="⚡">
+              <span class="r-bolt">⚡</span>
+              <span class="r-bolt-core" aria-hidden="true">⚡</span>
+            </span>
+            <span class="r-char year-num" style="--i:11">2</span>
+            <span class="r-char year-num" style="--i:12">6</span>
+          </span>
+        </h1>
+
+        <!-- Electric Arc Beam Underline -->
+        <div class="reveal-electric-beam" aria-hidden="true">
+          <span class="beam-spark left"></span>
+          <span class="beam-spark right"></span>
+        </div>
       </div>
 
-      <div class="loader-status-row">
-        <span class="loader-status" id="loader-status-text">INITIALIZING CIRCUIT GRID...</span>
-        <span class="loader-percent" id="loader-percent">0%</span>
+      <!-- Tagline & Symposium Highlights -->
+      <div class="reveal-meta">
+        <p class="reveal-type-pill">A NATIONAL LEVEL TECHNICAL SYMPOSIUM</p>
+        <p class="reveal-tagline">&ldquo;Empowering Innovation, Energizing the Future&rdquo;</p>
+        <div class="reveal-tags">
+          <span class="r-tag">📅 23 OCTOBER 2026</span>
+          <span class="r-tag">⚡ FREE REGISTRATION</span>
+          <span class="r-tag">🏆 WIN CASH &amp; PRIZES</span>
+        </div>
       </div>
 
-      <button id="skip-loader-btn" class="loader-skip-btn" type="button">ENTER WEBSITE &rarr;</button>
+      <!-- Power Grid Charge Progress Bar -->
+      <div class="reveal-power-dock">
+        <div class="reveal-bar-track">
+          <div class="reveal-bar-fill" id="loader-progress-fill"></div>
+          <div class="reveal-bar-spark" id="loader-bar-spark"></div>
+        </div>
+        <div class="reveal-bar-info">
+          <span class="reveal-status-label" id="loader-status-text">INITIALIZING HIGH-VOLTAGE COILS...</span>
+          <span class="reveal-percent-label" id="loader-percent">0%</span>
+        </div>
+      </div>
+
+      <!-- Skip / Enter Action -->
+      <button id="skip-loader-btn" class="reveal-enter-btn" type="button" aria-label="Enter Website Immediately">
+        <span class="enter-btn-text">ENTER WEBSITE</span>
+        <span class="enter-btn-arrow">&rarr;</span>
+      </button>
+
     </div>
   </div>
 
