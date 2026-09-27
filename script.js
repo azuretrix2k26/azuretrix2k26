@@ -9,20 +9,20 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ==========================================================================
-     1. Two-Thunder Attack & Collision Name Reveal Engine
+     1. Tesla Coil Plasma Arc Clash & Themed Name Reveal Engine
      ========================================================================== */
   const titleBox = document.getElementById('hero-title-box');
-  const clashCanvas = document.getElementById('thunder-clash-canvas');
-  const burstLayer = document.getElementById('thunder-burst-layer');
-  const impactFlash = document.getElementById('thunder-impact-flash');
-  const shockwave = document.getElementById('thunder-shockwave');
+  const clashCanvas = document.getElementById('tesla-arc-canvas');
+  const impactCore = document.getElementById('tesla-impact-core');
+  const shockwave = document.getElementById('tesla-shockwave-ring');
   const revealTitle = document.getElementById('hero-main-title');
+  const boltTarget = document.getElementById('tesla-bolt-target');
 
-  function initThunderClashReveal() {
+  function initTeslaCoilClashEngine() {
     if (!clashCanvas || !revealTitle) return;
 
     const ctx = clashCanvas.getContext('2d');
-    let width, height;
+    let width = 0, height = 0;
     let animFrame = null;
     let isClashing = false;
 
@@ -30,39 +30,54 @@ document.addEventListener('DOMContentLoaded', () => {
       const parent = clashCanvas.parentElement;
       if (!parent) return;
       const rect = parent.getBoundingClientRect();
-      width = clashCanvas.width = rect.width;
-      height = clashCanvas.height = rect.height;
+      width = clashCanvas.width = Math.max(300, Math.round(rect.width));
+      height = clashCanvas.height = Math.max(120, Math.round(rect.height));
     }
 
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Generate procedural jagged lightning path from (x1, y1) to (x2, y2)
-    function generateBoltPath(x1, y1, x2, y2, displace = 28, minDisplace = 4) {
+    // Compute target coordinates directly on the ⚡ symbol inside the stage
+    function getTargetCoords() {
+      if (boltTarget && clashCanvas) {
+        const canvasRect = clashCanvas.getBoundingClientRect();
+        const targetRect = boltTarget.getBoundingClientRect();
+        if (targetRect.width > 0 && targetRect.height > 0) {
+          return {
+            x: targetRect.left + (targetRect.width / 2) - canvasRect.left,
+            y: targetRect.top + (targetRect.height / 2) - canvasRect.top
+          };
+        }
+      }
+      return {
+        x: width * 0.58,
+        y: height * 0.50
+      };
+    }
+
+    // Procedural Fractal Midpoint Displacement Lightning Path
+    function generateBoltPath(x1, y1, x2, y2, displace = 26, minDisplace = 4) {
       let points = [{ x: x1, y: y1 }, { x: x2, y: y2 }];
       let currentDisplace = displace;
 
       while (currentDisplace > minDisplace) {
-        let newPoints = [];
+        const newPoints = [];
         for (let i = 0; i < points.length - 1; i++) {
           const p1 = points[i];
           const p2 = points[i + 1];
           const midX = (p1.x + p2.x) / 2;
           const midY = (p1.y + p2.y) / 2;
 
-          // Perpendicular offset for lightning zig-zag
           const normalX = -(p2.y - p1.y);
           const normalY = (p2.x - p1.x);
           const len = Math.hypot(normalX, normalY) || 1;
           const offset = (Math.random() - 0.5) * currentDisplace;
 
-          const mid = {
+          newPoints.push(p1);
+          newPoints.push({
             x: midX + (normalX / len) * offset,
             y: midY + (normalY / len) * offset
-          };
-
-          newPoints.push(p1);
-          newPoints.push(mid);
+          });
         }
         newPoints.push(points[points.length - 1]);
         points = newPoints;
@@ -71,37 +86,37 @@ document.addEventListener('DOMContentLoaded', () => {
       return points;
     }
 
-    // Draw a single branching lightning strike (Harmonized with Golden Thunder Image)
-    function drawLightningBolt(points, alpha = 1, branches = true) {
+    // Render multi-layer plasma bolt with custom palette
+    function drawPlasmaBolt(points, colorPrimary, colorGlow, alpha = 1, branches = true) {
       if (!points || points.length < 2) return;
 
       ctx.save();
 
-      // 1. Outer Golden Electrical Aura
+      // Pass 1: Saturated outer electrical corona
       ctx.beginPath();
       ctx.moveTo(points[0].x, points[0].y);
       for (let i = 1; i < points.length; i++) {
         ctx.lineTo(points[i].x, points[i].y);
       }
-      ctx.strokeStyle = `rgba(245, 158, 11, ${0.9 * alpha})`;
-      ctx.lineWidth = 4.5;
-      ctx.shadowColor = '#FBBF24';
-      ctx.shadowBlur = 18;
+      ctx.strokeStyle = colorGlow.replace('__A__', (0.85 * alpha).toFixed(3));
+      ctx.lineWidth = 6;
+      ctx.shadowColor = colorPrimary;
+      ctx.shadowBlur = 22;
       ctx.stroke();
 
-      // 2. Mid Amber/Cyan Flash
+      // Pass 2: Intense vibrant neon streamer
       ctx.beginPath();
       ctx.moveTo(points[0].x, points[0].y);
       for (let i = 1; i < points.length; i++) {
         ctx.lineTo(points[i].x, points[i].y);
       }
-      ctx.strokeStyle = `rgba(254, 240, 138, ${0.95 * alpha})`;
-      ctx.lineWidth = 2.4;
-      ctx.shadowColor = '#FACC15';
-      ctx.shadowBlur = 10;
+      ctx.strokeStyle = colorPrimary;
+      ctx.lineWidth = 3;
+      ctx.shadowColor = colorPrimary;
+      ctx.shadowBlur = 12;
       ctx.stroke();
 
-      // 3. Inner White-Hot Core
+      // Pass 3: White-hot central plasma core
       ctx.beginPath();
       ctx.moveTo(points[0].x, points[0].y);
       for (let i = 1; i < points.length; i++) {
@@ -113,14 +128,14 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.shadowBlur = 6;
       ctx.stroke();
 
-      // 4. Realistic Forking Side Branches
-      if (branches && points.length > 6) {
+      // Realistic Forking Side Branches
+      if (branches && points.length > 5) {
         const branchCount = Math.floor(points.length / 5);
         for (let b = 0; b < branchCount; b++) {
           const idx = Math.floor(Math.random() * (points.length - 3)) + 1;
           const root = points[idx];
-          const angle = (Math.random() - 0.5) * 1.4;
-          const bLen = 20 + Math.random() * 40;
+          const angle = (Math.random() - 0.5) * 1.5;
+          const bLen = 18 + Math.random() * 38;
           const bEndX = root.x + Math.cos(angle) * bLen;
           const bEndY = root.y + Math.sin(angle) * bLen;
 
@@ -130,137 +145,148 @@ document.addEventListener('DOMContentLoaded', () => {
           for (let k = 1; k < branchPoints.length; k++) {
             ctx.lineTo(branchPoints[k].x, branchPoints[k].y);
           }
-          ctx.strokeStyle = `rgba(251, 191, 36, ${0.65 * alpha})`;
+          ctx.strokeStyle = colorPrimary;
+          ctx.globalAlpha = 0.6 * alpha;
           ctx.lineWidth = 1.2;
           ctx.stroke();
+          ctx.globalAlpha = 1;
         }
       }
+
       ctx.restore();
     }
 
-    // Spark Particles for Collision Explosion
+    // Spark Particles for explosive plasma collision
     let sparks = [];
-    function spawnCollisionSparks(cx, cy, count = 42) {
+    function spawnCollisionSparks(cx, cy, count = 50) {
+      sparks = [];
       for (let i = 0; i < count; i++) {
         const angle = Math.random() * Math.PI * 2;
-        const speed = 2 + Math.random() * 7.5;
+        const speed = 2.5 + Math.random() * 8.5;
         sparks.push({
           x: cx,
           y: cy,
           vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed,
-          size: 1.5 + Math.random() * 2.8,
-          life: 1,
-          decay: 0.02 + Math.random() * 0.03,
-          color: Math.random() < 0.5 ? '#FACC15' : (Math.random() < 0.8 ? '#FFFFFF' : '#EF4444')
+          vy: Math.sin(angle) * speed - (Math.random() * 2), // subtle upward lift
+          size: 1.4 + Math.random() * 2.6,
+          life: 1.0,
+          decay: 0.018 + Math.random() * 0.024,
+          drag: 0.965,
+          gravity: 0.12,
+          color: Math.random() < 0.45 ? '#FACC15' : (Math.random() < 0.8 ? '#EF4444' : '#FFFFFF')
         });
       }
     }
 
-    function runThunderClash() {
+    function runTeslaClash() {
       if (isClashing) return;
       isClashing = true;
 
       resizeCanvas();
       if (animFrame) cancelAnimationFrame(animFrame);
 
-      // Trigger Golden Thunder Burst Image Layer
-      if (burstLayer) {
-        burstLayer.classList.remove('burst-active');
-        void burstLayer.offsetWidth; // force reflow
-        burstLayer.classList.add('burst-active');
-      }
-
-      // Reset animation classes
-      revealTitle.classList.remove('thunder-struck', 'strike-surge');
-      if (impactFlash) impactFlash.classList.remove('flash-active');
+      // Reset DOM state
+      revealTitle.classList.remove('energized', 'plasma-strike');
+      if (impactCore) impactCore.classList.remove('core-active');
       if (shockwave) shockwave.classList.remove('wave-active');
       sparks = [];
 
+      const target = getTargetCoords();
+
+      // Reposition impact flash & shockwave ring right at target coords
+      if (impactCore) {
+        impactCore.style.left = `${target.x}px`;
+        impactCore.style.top = `${target.y}px`;
+      }
+      if (shockwave) {
+        shockwave.style.left = `${target.x}px`;
+        shockwave.style.top = `${target.y}px`;
+      }
+
       const startTime = performance.now();
-      const strikeDuration = 600; // 600ms attack time
-      const totalDuration = 1150; // 1.15s total effect time
+      const strikeDuration = 520; // 520ms high-speed charge
+      const totalDuration = 1100; // 1.1s total effect cycle
       let hasCollided = false;
 
       function renderFrame(now) {
         const elapsed = now - startTime;
         ctx.clearRect(0, 0, width, height);
 
-        const cx = width * 0.5;
-        const cy = height * 0.5;
+        // Current target coordinates
+        const curTarget = getTargetCoords();
 
-        // Phase 1: Attack - Two thunder bolts charge from opposite corners towards center
+        // PHASE 1: HIGH-VOLTAGE ATTACK & STREAK TOWARDS ⚡
         if (elapsed < strikeDuration) {
           const progress = Math.min(1, elapsed / strikeDuration);
-          const easeProgress = Math.pow(progress, 1.4);
+          const easeProgress = Math.pow(progress, 1.45);
 
-          // Thunder 1: Top-Left to Center
+          // Bolt 1: Crimson Arc from Top-Left
           const startX1 = 0;
           const startY1 = 0;
-          const tipX1 = startX1 + (cx - startX1) * easeProgress;
-          const tipY1 = startY1 + (cy - startY1) * easeProgress;
+          const tipX1 = startX1 + (curTarget.x - startX1) * easeProgress;
+          const tipY1 = startY1 + (curTarget.y - startY1) * easeProgress;
           const path1 = generateBoltPath(startX1, startY1, tipX1, tipY1, 26, 4);
-          drawLightningBolt(path1, 1, true);
+          drawPlasmaBolt(path1, '#EF4444', 'rgba(239, 68, 68, __A__)', 1, true);
 
-          // Thunder 2: Bottom-Right to Center
+          // Bolt 2: Electric Gold Arc from Bottom-Right
           const startX2 = width;
           const startY2 = height;
-          const tipX2 = startX2 + (cx - startX2) * easeProgress;
-          const tipY2 = startY2 + (cy - startY2) * easeProgress;
+          const tipX2 = startX2 + (curTarget.x - startX2) * easeProgress;
+          const tipY2 = startY2 + (curTarget.y - startY2) * easeProgress;
           const path2 = generateBoltPath(startX2, startY2, tipX2, tipY2, 26, 4);
-          drawLightningBolt(path2, 1, true);
+          drawPlasmaBolt(path2, '#FACC15', 'rgba(245, 158, 11, __A__)', 1, true);
 
-          // Pre-collision sparks jumping between incoming tips
-          if (progress > 0.6 && Math.random() < 0.5) {
-            ctx.beginPath();
-            ctx.arc((tipX1 + tipX2) / 2, (tipY1 + tipY2) / 2, 4 + Math.random() * 6, 0, Math.PI * 2);
-            ctx.fillStyle = '#FFFFFF';
-            ctx.shadowColor = '#FDE047';
-            ctx.shadowBlur = 14;
-            ctx.fill();
-            ctx.shadowBlur = 0;
+          // Pre-collision Arc Induction between advancing tips
+          if (progress > 0.65) {
+            const arcDist = Math.hypot(tipX2 - tipX1, tipY2 - tipY1);
+            if (arcDist < 180 && Math.random() < 0.6) {
+              const jumpPath = generateBoltPath(tipX1, tipY1, tipX2, tipY2, 16, 4);
+              drawPlasmaBolt(jumpPath, '#FFFFFF', 'rgba(254, 240, 138, __A__)', 0.9, false);
+            }
           }
-        } 
-        // Phase 2: Impact & Clash Collision
+        }
+        // PHASE 2: IMPACT & PLASMA REVEAL SURGE
         else {
           if (!hasCollided) {
             hasCollided = true;
 
-            // Trigger visual shockwave & impact flash
-            if (impactFlash) {
-              void impactFlash.offsetWidth; // trigger reflow
-              impactFlash.classList.add('flash-active');
+            // Trigger explosive impact core & shockwave
+            if (impactCore) {
+              void impactCore.offsetWidth; // force reflow
+              impactCore.classList.add('core-active');
             }
             if (shockwave) {
               void shockwave.offsetWidth;
               shockwave.classList.add('wave-active');
             }
 
-            // REVEAL THE THEMED NAME AT MOMENT OF IMPACT!
-            revealTitle.classList.add('thunder-struck', 'strike-surge');
+            // REVEAL THE THEMED NAME AT MOMENT OF CLASH!
+            revealTitle.classList.add('energized', 'plasma-strike');
 
-            // Spawn collision spark explosion
-            spawnCollisionSparks(cx, cy, 45);
+            // Spawn explosive particle sparks
+            spawnCollisionSparks(curTarget.x, curTarget.y, 52);
           }
 
-          // Residual crackling lightning dissipating
+          // Residual high-frequency crackle dissipation
           const dissipateElapsed = elapsed - strikeDuration;
           const dissipateTotal = totalDuration - strikeDuration;
           const alpha = Math.max(0, 1 - (dissipateElapsed / dissipateTotal));
 
-          if (alpha > 0.05 && Math.random() < 0.7) {
-            const boltA = generateBoltPath(0, 0, cx, cy, 20 * alpha, 5);
-            const boltB = generateBoltPath(width, height, cx, cy, 20 * alpha, 5);
-            drawLightningBolt(boltA, alpha * 0.7, false);
-            drawLightningBolt(boltB, alpha * 0.7, false);
+          if (alpha > 0.08 && Math.random() < 0.72) {
+            const boltA = generateBoltPath(0, 0, curTarget.x, curTarget.y, 18 * alpha, 5);
+            const boltB = generateBoltPath(width, height, curTarget.x, curTarget.y, 18 * alpha, 5);
+            drawPlasmaBolt(boltA, '#EF4444', 'rgba(239, 68, 68, __A__)', alpha * 0.75, false);
+            drawPlasmaBolt(boltB, '#FACC15', 'rgba(245, 158, 11, __A__)', alpha * 0.75, false);
           }
         }
 
-        // Render spark particles
+        // Render physics spark particles
         for (let i = sparks.length - 1; i >= 0; i--) {
           const sp = sparks[i];
           sp.x += sp.vx;
           sp.y += sp.vy;
+          sp.vx *= sp.drag;
+          sp.vy = (sp.vy * sp.drag) + sp.gravity;
           sp.life -= sp.decay;
 
           if (sp.life <= 0) {
@@ -269,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
 
           ctx.beginPath();
-          ctx.arc(sp.x, sp.y, sp.size * sp.life, 0, Math.PI * 2);
+          ctx.arc(sp.x, sp.y, Math.max(0.5, sp.size * sp.life), 0, Math.PI * 2);
           ctx.fillStyle = sp.color;
           ctx.globalAlpha = sp.life;
           ctx.shadowColor = sp.color;
@@ -290,14 +316,14 @@ document.addEventListener('DOMContentLoaded', () => {
       animFrame = requestAnimationFrame(renderFrame);
     }
 
-    // Trigger immediately on page opening (120ms)
-    setTimeout(runThunderClash, 120);
+    // Trigger opening reveal automatically upon load
+    setTimeout(runTeslaClash, 90);
 
-    // Allow user to click title to replay the thunder collision!
-    revealTitle.addEventListener('click', runThunderClash);
+    // Interactive replay trigger on title click
+    revealTitle.addEventListener('click', runTeslaClash);
   }
 
-  initThunderClashReveal();
+  initTeslaCoilClashEngine();
 
 
   /* ==========================================================================
