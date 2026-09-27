@@ -9,181 +9,274 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ==========================================================================
-     1. AZURETRIX 2⚡26 Electric Lightning Reveal Opening Engine
+     1. Two-Thunder Attack & Collision Name Reveal Engine
      ========================================================================== */
-  const loaderScreen = document.getElementById('loader-screen');
-  const loaderProgressFill = document.getElementById('loader-progress-fill');
-  const loaderBarSpark = document.getElementById('loader-bar-spark');
-  const loaderStatusText = document.getElementById('loader-status-text');
-  const loaderPercent = document.getElementById('loader-percent');
-  const skipLoaderBtn = document.getElementById('skip-loader-btn');
-  const revealFlashFx = document.getElementById('reveal-flash-fx');
-  const sparksCanvas = document.getElementById('reveal-sparks-canvas');
+  const titleBox = document.getElementById('hero-title-box');
+  const clashCanvas = document.getElementById('thunder-clash-canvas');
+  const impactFlash = document.getElementById('thunder-impact-flash');
+  const shockwave = document.getElementById('thunder-shockwave');
+  const revealTitle = document.getElementById('hero-main-title');
 
-  let loadProgress = 0;
-  let loaderDismissed = false;
-  let sparksAnimId = null;
+  function initThunderClashReveal() {
+    if (!clashCanvas || !revealTitle) return;
 
-  const statusMessages = [
-    { threshold: 22, text: 'INITIALIZING HIGH-VOLTAGE COILS...' },
-    { threshold: 48, text: 'CHARGING CAPACITOR MATRIX...' },
-    { threshold: 72, text: 'SYNCHRONIZING 50.0 Hz FREQUENCY...' },
-    { threshold: 92, text: 'IGNITING ELECTRIC LIGHTNING STRIKE...' },
-    { threshold: 100, text: '⚡ AZURETRIX 2⚡26 ENERGIZED!' }
-  ];
+    const ctx = clashCanvas.getContext('2d');
+    let width, height;
+    let animFrame = null;
+    let isClashing = false;
 
-  // Dynamic Lightning Sparks Generator on Reveal Canvas
-  if (sparksCanvas) {
-    const sCtx = sparksCanvas.getContext('2d');
-    let sWidth = (sparksCanvas.width = window.innerWidth);
-    let sHeight = (sparksCanvas.height = window.innerHeight);
-
-    window.addEventListener('resize', () => {
-      if (loaderDismissed) return;
-      sWidth = sparksCanvas.width = window.innerWidth;
-      sHeight = sparksCanvas.height = window.innerHeight;
-    });
-
-    const sparks = [];
-    const maxSparks = 35;
-
-    function createSpark() {
-      // Emanate near center lightning collision
-      const centerX = sWidth * 0.5 + (Math.random() - 0.5) * 60;
-      const centerY = sHeight * 0.5 + (Math.random() - 0.5) * 40;
-      const angle = Math.random() * Math.PI * 2;
-      const speed = 1.5 + Math.random() * 4.5;
-
-      return {
-        x: centerX,
-        y: centerY,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        size: 1.2 + Math.random() * 2.2,
-        life: 1,
-        decay: 0.015 + Math.random() * 0.03,
-        color: Math.random() < 0.6 ? '#38BDF8' : (Math.random() < 0.85 ? '#FFFFFF' : '#FDE047')
-      };
+    function resizeCanvas() {
+      const parent = clashCanvas.parentElement;
+      if (!parent) return;
+      const rect = parent.getBoundingClientRect();
+      width = clashCanvas.width = rect.width;
+      height = clashCanvas.height = rect.height;
     }
 
-    function renderSparks() {
-      if (loaderDismissed) return;
-      sCtx.clearRect(0, 0, sWidth, sHeight);
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
-      // Random micro-lightning filament
-      if (Math.random() < 0.3) {
-        const startX = sWidth * 0.5 + (Math.random() - 0.5) * 80;
-        const startY = sHeight * 0.5 + (Math.random() - 0.5) * 60;
-        let curX = startX;
-        let curY = startY;
+    // Generate procedural jagged lightning path from (x1, y1) to (x2, y2)
+    function generateBoltPath(x1, y1, x2, y2, displace = 28, minDisplace = 4) {
+      let points = [{ x: x1, y: y1 }, { x: x2, y: y2 }];
+      let currentDisplace = displace;
 
-        sCtx.beginPath();
-        sCtx.moveTo(curX, curY);
-        const segments = 4 + Math.floor(Math.random() * 5);
-        for (let s = 0; s < segments; s++) {
-          curX += (Math.random() - 0.5) * 35;
-          curY += (Math.random() - 0.5) * 35;
-          sCtx.lineTo(curX, curY);
+      while (currentDisplace > minDisplace) {
+        let newPoints = [];
+        for (let i = 0; i < points.length - 1; i++) {
+          const p1 = points[i];
+          const p2 = points[i + 1];
+          const midX = (p1.x + p2.x) / 2;
+          const midY = (p1.y + p2.y) / 2;
+
+          // Perpendicular offset for lightning zig-zag
+          const normalX = -(p2.y - p1.y);
+          const normalY = (p2.x - p1.x);
+          const len = Math.hypot(normalX, normalY) || 1;
+          const offset = (Math.random() - 0.5) * currentDisplace;
+
+          const mid = {
+            x: midX + (normalX / len) * offset,
+            y: midY + (normalY / len) * offset
+          };
+
+          newPoints.push(p1);
+          newPoints.push(mid);
         }
-        sCtx.strokeStyle = Math.random() < 0.5 ? 'rgba(255, 255, 255, 0.8)' : 'rgba(56, 189, 248, 0.7)';
-        sCtx.lineWidth = 1 + Math.random() * 1.5;
-        sCtx.shadowColor = '#38BDF8';
-        sCtx.shadowBlur = 12;
-        sCtx.stroke();
-        sCtx.shadowBlur = 0;
+        newPoints.push(points[points.length - 1]);
+        points = newPoints;
+        currentDisplace /= 2;
       }
+      return points;
+    }
 
-      // Update & render particles
-      while (sparks.length < maxSparks) {
-        sparks.push(createSpark());
+    // Draw a single branching lightning strike
+    function drawLightningBolt(points, alpha = 1, branches = true) {
+      if (!points || points.length < 2) return;
+
+      // 1. Outer Cyan Electrical Aura
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(points[0].x, points[0].y);
+      for (let i = 1; i < points.length; i++) {
+        ctx.lineTo(points[i].x, points[i].y);
       }
+      ctx.strokeStyle = `rgba(56, 189, 248, ${0.85 * alpha})`;
+      ctx.lineWidth = 4;
+      ctx.shadowColor = '#00E5FF';
+      ctx.shadowBlur = 18;
+      ctx.stroke();
 
-      for (let i = sparks.length - 1; i >= 0; i--) {
-        const sp = sparks[i];
-        sp.x += sp.vx;
-        sp.y += sp.vy;
-        sp.life -= sp.decay;
+      // 2. Inner White-Hot Core
+      ctx.beginPath();
+      ctx.moveTo(points[0].x, points[0].y);
+      for (let i = 1; i < points.length; i++) {
+        ctx.lineTo(points[i].x, points[i].y);
+      }
+      ctx.strokeStyle = `rgba(255, 255, 255, ${0.95 * alpha})`;
+      ctx.lineWidth = 1.8;
+      ctx.shadowColor = '#FFFFFF';
+      ctx.shadowBlur = 8;
+      ctx.stroke();
 
-        if (sp.life <= 0) {
-          sparks.splice(i, 1);
-          continue;
+      // 3. Realistic Forking Side Branches
+      if (branches && points.length > 6) {
+        const branchCount = Math.floor(points.length / 5);
+        for (let b = 0; b < branchCount; b++) {
+          const idx = Math.floor(Math.random() * (points.length - 3)) + 1;
+          const root = points[idx];
+          const angle = (Math.random() - 0.5) * 1.4;
+          const bLen = 20 + Math.random() * 40;
+          const bEndX = root.x + Math.cos(angle) * bLen;
+          const bEndY = root.y + Math.sin(angle) * bLen;
+
+          const branchPoints = generateBoltPath(root.x, root.y, bEndX, bEndY, 14, 4);
+          ctx.beginPath();
+          ctx.moveTo(branchPoints[0].x, branchPoints[0].y);
+          for (let k = 1; k < branchPoints.length; k++) {
+            ctx.lineTo(branchPoints[k].x, branchPoints[k].y);
+          }
+          ctx.strokeStyle = `rgba(56, 189, 248, ${0.5 * alpha})`;
+          ctx.lineWidth = 1.2;
+          ctx.stroke();
+        }
+      }
+      ctx.restore();
+    }
+
+    // Spark Particles for Collision Explosion
+    let sparks = [];
+    function spawnCollisionSparks(cx, cy, count = 35) {
+      for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = 2 + Math.random() * 7;
+        sparks.push({
+          x: cx,
+          y: cy,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          size: 1.5 + Math.random() * 2.5,
+          life: 1,
+          decay: 0.02 + Math.random() * 0.03,
+          color: Math.random() < 0.6 ? '#38BDF8' : (Math.random() < 0.85 ? '#FFFFFF' : '#F59E0B')
+        });
+      }
+    }
+
+    function runThunderClash() {
+      if (isClashing) return;
+      isClashing = true;
+
+      resizeCanvas();
+      if (animFrame) cancelAnimationFrame(animFrame);
+
+      // Reset animation classes
+      revealTitle.classList.remove('thunder-struck', 'strike-surge');
+      if (impactFlash) impactFlash.classList.remove('flash-active');
+      if (shockwave) shockwave.classList.remove('wave-active');
+      sparks = [];
+
+      const startTime = performance.now();
+      const strikeDuration = 600; // 600ms attack time
+      const totalDuration = 1100; // 1.1s total effect time
+      let hasCollided = false;
+
+      function renderFrame(now) {
+        const elapsed = now - startTime;
+        ctx.clearRect(0, 0, width, height);
+
+        const cx = width * 0.5;
+        const cy = height * 0.5;
+
+        // Phase 1: Attack - Two thunder bolts charge from opposite corners towards center
+        if (elapsed < strikeDuration) {
+          const progress = Math.min(1, elapsed / strikeDuration);
+          const easeProgress = Math.pow(progress, 1.4);
+
+          // Thunder 1: Top-Left to Center
+          const startX1 = 0;
+          const startY1 = 0;
+          const tipX1 = startX1 + (cx - startX1) * easeProgress;
+          const tipY1 = startY1 + (cy - startY1) * easeProgress;
+          const path1 = generateBoltPath(startX1, startY1, tipX1, tipY1, 26, 4);
+          drawLightningBolt(path1, 1, true);
+
+          // Thunder 2: Bottom-Right to Center
+          const startX2 = width;
+          const startY2 = height;
+          const tipX2 = startX2 + (cx - startX2) * easeProgress;
+          const tipY2 = startY2 + (cy - startY2) * easeProgress;
+          const path2 = generateBoltPath(startX2, startY2, tipX2, tipY2, 26, 4);
+          drawLightningBolt(path2, 1, true);
+
+          // Pre-collision sparks jumping between incoming tips
+          if (progress > 0.6 && Math.random() < 0.5) {
+            ctx.beginPath();
+            ctx.arc((tipX1 + tipX2) / 2, (tipY1 + tipY2) / 2, 4 + Math.random() * 6, 0, Math.PI * 2);
+            ctx.fillStyle = '#FFFFFF';
+            ctx.shadowColor = '#38BDF8';
+            ctx.shadowBlur = 14;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+          }
+        } 
+        // Phase 2: Impact & Clash Collision
+        else {
+          if (!hasCollided) {
+            hasCollided = true;
+
+            // Trigger visual shockwave & impact flash
+            if (impactFlash) {
+              void impactFlash.offsetWidth; // trigger reflow
+              impactFlash.classList.add('flash-active');
+            }
+            if (shockwave) {
+              void shockwave.offsetWidth;
+              shockwave.classList.add('wave-active');
+            }
+
+            // REVEAL THE THEMED NAME AT MOMENT OF IMPACT!
+            revealTitle.classList.add('thunder-struck', 'strike-surge');
+
+            // Spawn collision spark explosion
+            spawnCollisionSparks(cx, cy, 40);
+          }
+
+          // Residual crackling lightning dissipating
+          const dissipateElapsed = elapsed - strikeDuration;
+          const dissipateTotal = totalDuration - strikeDuration;
+          const alpha = Math.max(0, 1 - (dissipateElapsed / dissipateTotal));
+
+          if (alpha > 0.05 && Math.random() < 0.7) {
+            const boltA = generateBoltPath(0, 0, cx, cy, 20 * alpha, 5);
+            const boltB = generateBoltPath(width, height, cx, cy, 20 * alpha, 5);
+            drawLightningBolt(boltA, alpha * 0.7, false);
+            drawLightningBolt(boltB, alpha * 0.7, false);
+          }
         }
 
-        sCtx.beginPath();
-        sCtx.arc(sp.x, sp.y, sp.size * sp.life, 0, Math.PI * 2);
-        sCtx.fillStyle = sp.color;
-        sCtx.globalAlpha = sp.life;
-        sCtx.shadowColor = sp.color;
-        sCtx.shadowBlur = 8;
-        sCtx.fill();
-        sCtx.globalAlpha = 1;
-        sCtx.shadowBlur = 0;
+        // Render spark particles
+        for (let i = sparks.length - 1; i >= 0; i--) {
+          const sp = sparks[i];
+          sp.x += sp.vx;
+          sp.y += sp.vy;
+          sp.life -= sp.decay;
+
+          if (sp.life <= 0) {
+            sparks.splice(i, 1);
+            continue;
+          }
+
+          ctx.beginPath();
+          ctx.arc(sp.x, sp.y, sp.size * sp.life, 0, Math.PI * 2);
+          ctx.fillStyle = sp.color;
+          ctx.globalAlpha = sp.life;
+          ctx.shadowColor = sp.color;
+          ctx.shadowBlur = 8;
+          ctx.fill();
+          ctx.globalAlpha = 1;
+          ctx.shadowBlur = 0;
+        }
+
+        if (elapsed < totalDuration || sparks.length > 0) {
+          animFrame = requestAnimationFrame(renderFrame);
+        } else {
+          ctx.clearRect(0, 0, width, height);
+          isClashing = false;
+        }
       }
 
-      sparksAnimId = requestAnimationFrame(renderSparks);
+      animFrame = requestAnimationFrame(renderFrame);
     }
 
-    sparksAnimId = requestAnimationFrame(renderSparks);
+    // Trigger immediately on page opening (120ms)
+    setTimeout(runThunderClash, 120);
+
+    // Allow user to click title to replay the thunder collision!
+    revealTitle.addEventListener('click', runThunderClash);
   }
 
-  function dismissLoader() {
-    if (loaderDismissed || !loaderScreen) return;
-    loaderDismissed = true;
-
-    if (sparksAnimId) {
-      cancelAnimationFrame(sparksAnimId);
-      sparksAnimId = null;
-    }
-
-    // Trigger final energetic shockwave flash
-    if (revealFlashFx) {
-      revealFlashFx.style.transition = 'opacity 0.2s ease';
-      revealFlashFx.style.opacity = '1';
-    }
-
-    setTimeout(() => {
-      loaderScreen.classList.add('fade-out');
-      document.body.style.overflow = '';
-      setTimeout(() => {
-        if (loaderScreen) loaderScreen.style.display = 'none';
-      }, 750);
-    }, 200);
-  }
-
-  // Prevent scroll during reveal animation
-  if (loaderScreen && !loaderDismissed) {
-    document.body.style.overflow = 'hidden';
-
-    // Cinematic progress progression (~2.2 seconds)
-    const loadInterval = setInterval(() => {
-      loadProgress += Math.floor(Math.random() * 8) + 4;
-      if (loadProgress >= 100) {
-        loadProgress = 100;
-        clearInterval(loadInterval);
-      }
-
-      if (loaderProgressFill) loaderProgressFill.style.width = `${loadProgress}%`;
-      if (loaderBarSpark) loaderBarSpark.style.left = `${loadProgress}%`;
-      if (loaderPercent) loaderPercent.textContent = `${loadProgress}%`;
-
-      // Status text progression
-      const currentMsg = statusMessages.find(m => loadProgress <= m.threshold);
-      if (currentMsg && loaderStatusText) {
-        loaderStatusText.textContent = currentMsg.text;
-      }
-
-      if (loadProgress === 100) {
-        setTimeout(dismissLoader, 420);
-      }
-    }, 45);
-
-    if (skipLoaderBtn) {
-      skipLoaderBtn.addEventListener('click', () => {
-        clearInterval(loadInterval);
-        dismissLoader();
-      });
-    }
-  }
+  initThunderClashReveal();
 
 
   /* ==========================================================================

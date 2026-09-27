@@ -31,90 +31,7 @@
 
 <body class="eee-body">
 
-  <!-- AZURETRIX 2⚡26 ELECTRIC LIGHTNING REVEAL INTRO SCREEN -->
-  <div id="loader-screen" class="reveal-screen" aria-label="AZURETRIX 2⚡26 Opening Reveal">
-    <!-- Lightning Background Layer (Using uploaded image) -->
-    <div class="reveal-bg-layer" aria-hidden="true"></div>
-    <div class="reveal-flash-fx" id="reveal-flash-fx" aria-hidden="true"></div>
-    <div class="reveal-vignette" aria-hidden="true"></div>
-    <canvas id="reveal-sparks-canvas" class="reveal-sparks-canvas" aria-hidden="true"></canvas>
 
-    <!-- Central High Voltage Reveal Stage -->
-    <div class="reveal-stage">
-      
-      <!-- College & Department Line -->
-      <div class="reveal-dept-badge">
-        <span class="reveal-bolt-icon">⚡</span>
-        <span class="reveal-dept-text">UCE ARNI &bull; DEPT OF ELECTRICAL &amp; ELECTRONICS ENGINEERING</span>
-      </div>
-
-      <!-- Main Title Reveal: AZURETRIX 2⚡26 -->
-      <div class="reveal-title-container">
-        <!-- Radial Core Glow behind the title -->
-        <div class="reveal-core-glow" aria-hidden="true"></div>
-        <div class="reveal-shockwave-ring" aria-hidden="true"></div>
-
-        <h1 class="reveal-name-title" aria-label="AZURETRIX 2⚡26">
-          <span class="reveal-word azuretrix-word">
-            <span class="r-char" style="--i:0">A</span>
-            <span class="r-char" style="--i:1">Z</span>
-            <span class="r-char" style="--i:2">U</span>
-            <span class="r-char" style="--i:3">R</span>
-            <span class="r-char" style="--i:4">E</span>
-            <span class="r-char" style="--i:5">T</span>
-            <span class="r-char" style="--i:6">R</span>
-            <span class="r-char" style="--i:7">I</span>
-            <span class="r-char" style="--i:8">X</span>
-          </span>
-          <span class="reveal-word year-word">
-            <span class="r-char year-num" style="--i:9">2</span>
-            <span class="r-bolt-wrap" style="--i:10" title="⚡">
-              <span class="r-bolt">⚡</span>
-              <span class="r-bolt-core" aria-hidden="true">⚡</span>
-            </span>
-            <span class="r-char year-num" style="--i:11">2</span>
-            <span class="r-char year-num" style="--i:12">6</span>
-          </span>
-        </h1>
-
-        <!-- Electric Arc Beam Underline -->
-        <div class="reveal-electric-beam" aria-hidden="true">
-          <span class="beam-spark left"></span>
-          <span class="beam-spark right"></span>
-        </div>
-      </div>
-
-      <!-- Tagline & Symposium Highlights -->
-      <div class="reveal-meta">
-        <p class="reveal-type-pill">A NATIONAL LEVEL TECHNICAL SYMPOSIUM</p>
-        <p class="reveal-tagline">&ldquo;Empowering Innovation, Energizing the Future&rdquo;</p>
-        <div class="reveal-tags">
-          <span class="r-tag">📅 23 OCTOBER 2026</span>
-          <span class="r-tag">⚡ FREE REGISTRATION</span>
-          <span class="r-tag">🏆 WIN CASH &amp; PRIZES</span>
-        </div>
-      </div>
-
-      <!-- Power Grid Charge Progress Bar -->
-      <div class="reveal-power-dock">
-        <div class="reveal-bar-track">
-          <div class="reveal-bar-fill" id="loader-progress-fill"></div>
-          <div class="reveal-bar-spark" id="loader-bar-spark"></div>
-        </div>
-        <div class="reveal-bar-info">
-          <span class="reveal-status-label" id="loader-status-text">INITIALIZING HIGH-VOLTAGE COILS...</span>
-          <span class="reveal-percent-label" id="loader-percent">0%</span>
-        </div>
-      </div>
-
-      <!-- Skip / Enter Action -->
-      <button id="skip-loader-btn" class="reveal-enter-btn" type="button" aria-label="Enter Website Immediately">
-        <span class="enter-btn-text">ENTER WEBSITE</span>
-        <span class="enter-btn-arrow">&rarr;</span>
-      </button>
-
-    </div>
-  </div>
 
   <!-- ACCESSIBILITY SKIP LINK -->
   <a href="#main-content" class="skip-to-content">Skip to content</a>
@@ -227,12 +144,20 @@
           <p class="inst-presents">Proudly Presents</p>
         </div>
 
-        <!-- Main Azuretrix Title & Theme from Poster -->
-        <div class="hero-title-box">
+        <!-- Main Azuretrix Title & Theme from Poster with Two-Thunder Clash Reveal -->
+        <div class="hero-title-box" id="hero-title-box">
           <span class="hero-symposium-badge">A NATIONAL LEVEL TECHNICAL SYMPOSIUM</span>
-          <h1 class="hero-main-title">
-            <span class="txt-purple-gradient">AZURETRIX</span>
-            <span class="txt-year">2<span class="txt-bolt">⚡</span>26</span>
+          
+          <!-- Two-Thunder Attack & Collision Stage -->
+          <div class="thunder-clash-stage" id="thunder-clash-stage" aria-hidden="true">
+            <canvas id="thunder-clash-canvas" class="thunder-clash-canvas"></canvas>
+            <div class="thunder-impact-flash" id="thunder-impact-flash"></div>
+            <div class="thunder-shockwave" id="thunder-shockwave"></div>
+          </div>
+
+          <h1 class="hero-main-title thunder-reveal-title" id="hero-main-title" aria-label="AZURETRIX 2⚡26" title="Click to replay thunder clash">
+            <span class="txt-purple-gradient name-brand">AZURETRIX</span>
+            <span class="txt-year name-year">2<span class="txt-bolt name-bolt">⚡</span>26</span>
           </h1>
           <p class="hero-tagline">&ldquo;Empowering Innovation, Energizing the Future&rdquo;</p>
         </div>

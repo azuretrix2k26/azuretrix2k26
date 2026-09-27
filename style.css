@@ -190,504 +190,7 @@ button {
   background: radial-gradient(circle, rgba(220, 38, 38, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
 }
 
-/* --------------------------------------------------------------------------
-   4. AZURETRIX 2⚡26 Electric Lightning Reveal Opening Screen
-   -------------------------------------------------------------------------- */
-.loader-screen,
-.reveal-screen {
-  position: fixed;
-  inset: 0;
-  background-color: #030a1c;
-  z-index: 99999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
-              visibility 0.7s ease;
-}
 
-.loader-screen.fade-out,
-.reveal-screen.fade-out {
-  opacity: 0;
-  transform: scale(1.05);
-  visibility: hidden;
-  pointer-events: none;
-}
-
-/* Background image layer using user's uploaded lightning visual */
-.reveal-bg-layer {
-  position: absolute;
-  inset: 0;
-  background-image: url('assets/lightning-reveal-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: brightness(0.95) contrast(1.18);
-  transform: scale(1.02);
-  animation: revealBgDrift 4s ease-in-out infinite alternate;
-  z-index: 1;
-}
-
-@keyframes revealBgDrift {
-  0% { transform: scale(1.02) rotate(0deg); filter: brightness(0.92) contrast(1.15); }
-  50% { transform: scale(1.05) rotate(0.3deg); filter: brightness(1.08) contrast(1.22); }
-  100% { transform: scale(1.03) rotate(-0.2deg); filter: brightness(0.95) contrast(1.18); }
-}
-
-/* Atmospheric lightning flicker overlay */
-.reveal-flash-fx {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(224, 242, 254, 0.35) 0%, rgba(56, 189, 248, 0.22) 40%, rgba(2, 132, 199, 0) 75%);
-  pointer-events: none;
-  z-index: 2;
-  opacity: 0.2;
-  animation: lightningFlicker 3s infinite;
-}
-
-@keyframes lightningFlicker {
-  0%, 100% { opacity: 0.15; }
-  12% { opacity: 0.85; filter: brightness(1.4); }
-  14% { opacity: 0.2; }
-  18% { opacity: 1; filter: brightness(1.6); }
-  22% { opacity: 0.3; }
-  35% { opacity: 0.15; }
-  60% { opacity: 0.65; }
-  63% { opacity: 0.2; }
-}
-
-/* Vignette to frame the energy at center */
-.reveal-vignette {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(3, 10, 28, 0.1) 20%, rgba(3, 10, 28, 0.65) 70%, rgba(2, 6, 23, 0.95) 100%);
-  pointer-events: none;
-  z-index: 3;
-}
-
-/* Interactive & Ambient Canvas Sparks */
-.reveal-sparks-canvas {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 4;
-}
-
-/* Central Stage Container */
-.reveal-stage {
-  position: relative;
-  z-index: 10;
-  width: 92%;
-  max-width: 900px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 30px 20px;
-}
-
-/* Department Badge */
-.reveal-dept-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 18px;
-  background: rgba(14, 165, 233, 0.16);
-  border: 1px solid rgba(56, 189, 248, 0.45);
-  border-radius: var(--radius-pill);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 0 24px rgba(14, 165, 233, 0.3);
-  margin-bottom: 20px;
-  animation: badgeDrop 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes badgeDrop {
-  0% { opacity: 0; transform: translateY(-16px) scale(0.9); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.reveal-bolt-icon {
-  color: #FACC15;
-  font-size: 0.95rem;
-  filter: drop-shadow(0 0 8px #FACC15);
-  animation: sparkPulse 1.6s infinite ease-in-out;
-}
-
-.reveal-dept-text {
-  font-family: var(--font-heading);
-  font-size: clamp(0.72rem, 1.8vw, 0.82rem);
-  font-weight: 700;
-  letter-spacing: 0.10em;
-  color: #E0F2FE;
-  text-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
-}
-
-/* Title Wrapper with Core Glow */
-.reveal-title-container {
-  position: relative;
-  margin-bottom: 18px;
-  width: 100%;
-}
-
-.reveal-core-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(90vw, 420px);
-  height: 180px;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.9) 0%, rgba(56, 189, 248, 0.6) 35%, rgba(2, 132, 199, 0.2) 65%, transparent 80%);
-  filter: blur(36px);
-  pointer-events: none;
-  z-index: -1;
-  animation: corePulse 2s ease-in-out infinite alternate;
-}
-
-@keyframes corePulse {
-  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.75; }
-  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
-}
-
-/* Shockwave ring expanding when letters emerge */
-.reveal-shockwave-ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 2px solid rgba(186, 230, 253, 0.8);
-  box-shadow: 0 0 25px rgba(56, 189, 248, 0.8), inset 0 0 20px rgba(56, 189, 248, 0.5);
-  pointer-events: none;
-  z-index: -1;
-  animation: shockwaveExpand 2.2s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
-}
-
-@keyframes shockwaveExpand {
-  0% { width: 40px; height: 40px; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
-  60% { opacity: 0.6; }
-  100% { width: 560px; height: 560px; opacity: 0; transform: translate(-50%, -50%) scale(1.2); }
-}
-
-/* Main Azuretrix 2⚡26 Reveal Title */
-.reveal-name-title {
-  font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 7.5vw, 5.2rem);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: 0.03em;
-  color: #FFFFFF;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 12px 18px;
-  margin: 0;
-  text-transform: uppercase;
-}
-
-.reveal-word {
-  display: inline-flex;
-  align-items: center;
-}
-
-.year-word {
-  display: inline-flex;
-  align-items: center;
-}
-
-/* Individual letter reveal strike animation */
-.r-char {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(28px) scale(0.7);
-  filter: blur(10px);
-  animation: letterStrike 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.2) forwards;
-  animation-delay: calc(var(--i) * 0.055s);
-  color: #FFFFFF;
-  text-shadow: 0 0 20px rgba(56, 189, 248, 0.8), 0 0 40px rgba(2, 132, 199, 0.6);
-}
-
-@keyframes letterStrike {
-  0% {
-    opacity: 0;
-    transform: translateY(28px) scale(0.7);
-    filter: blur(10px);
-    text-shadow: 0 0 40px #FFFFFF, 0 0 80px #38BDF8;
-  }
-  50% {
-    opacity: 1;
-    transform: translateY(-4px) scale(1.14);
-    filter: blur(0);
-    text-shadow: 0 0 25px #FFFFFF, 0 0 50px #38BDF8, 0 0 90px #0284C7;
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6), 0 0 22px rgba(56, 189, 248, 0.85), 0 0 50px rgba(14, 165, 233, 0.6);
-  }
-}
-
-.year-num {
-  color: #BAE6FD;
-  text-shadow: 0 0 25px rgba(56, 189, 248, 0.9), 0 0 50px rgba(2, 132, 199, 0.7);
-}
-
-/* High Voltage Golden ⚡ Bolt */
-.r-bolt-wrap {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  margin: 0 4px;
-  opacity: 0;
-  transform: scale(0.4);
-  filter: blur(10px);
-  animation: boltStrike 0.7s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
-  animation-delay: calc(var(--i) * 0.055s);
-}
-
-@keyframes boltStrike {
-  0% { opacity: 0; transform: scale(0.4); filter: blur(10px); }
-  60% { opacity: 1; transform: scale(1.35) rotate(6deg); filter: blur(0); }
-  100% { opacity: 1; transform: scale(1) rotate(0deg); filter: blur(0); }
-}
-
-.r-bolt {
-  color: #FACC15;
-  font-size: 1.18em;
-  display: inline-block;
-  filter: drop-shadow(0 0 10px #FEF08A) drop-shadow(0 0 25px #EAB308) drop-shadow(0 0 45px #CA8A04);
-  animation: boltSparkPulse 1.4s infinite alternate ease-in-out;
-}
-
-.r-bolt-core {
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: #FFFFFF;
-  font-size: 1.18em;
-  opacity: 0.6;
-  filter: blur(1px);
-  pointer-events: none;
-  animation: boltCoreFlash 1.4s infinite alternate ease-in-out;
-}
-
-@keyframes boltSparkPulse {
-  0% { transform: scale(1); filter: drop-shadow(0 0 8px #FEF08A) drop-shadow(0 0 20px #EAB308); }
-  50% { transform: scale(1.18) rotate(3deg); filter: drop-shadow(0 0 16px #FFFFFF) drop-shadow(0 0 35px #FDE047) drop-shadow(0 0 65px #EAB308); }
-  100% { transform: scale(1); filter: drop-shadow(0 0 8px #FEF08A) drop-shadow(0 0 20px #EAB308); }
-}
-
-@keyframes boltCoreFlash {
-  0% { opacity: 0.4; }
-  50% { opacity: 0.9; }
-  100% { opacity: 0.4; }
-}
-
-/* Electric beam underline */
-.reveal-electric-beam {
-  width: min(100%, 560px);
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, #0284C7 15%, #38BDF8 40%, #FFFFFF 50%, #38BDF8 60%, #0284C7 85%, transparent 100%);
-  margin: 14px auto 0 auto;
-  position: relative;
-  box-shadow: 0 0 16px #38BDF8, 0 0 32px #0284C7;
-  opacity: 0;
-  transform: scaleX(0.1);
-  animation: beamExpand 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.6s;
-}
-
-@keyframes beamExpand {
-  0% { opacity: 0; transform: scaleX(0.1); }
-  50% { opacity: 1; transform: scaleX(1.05); }
-  100% { opacity: 1; transform: scaleX(1); }
-}
-
-.beam-spark {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 6px;
-  height: 6px;
-  background: #FFFFFF;
-  border-radius: 50%;
-  box-shadow: 0 0 10px #FFFFFF, 0 0 20px #38BDF8;
-}
-
-.beam-spark.left { left: 15%; animation: sparkFlicker 1.2s infinite; }
-.beam-spark.right { right: 85%; animation: sparkFlicker 1.4s infinite 0.2s; }
-
-@keyframes sparkFlicker {
-  0%, 100% { opacity: 0.3; transform: translateY(-50%) scale(0.8); }
-  50% { opacity: 1; transform: translateY(-50%) scale(1.4); }
-}
-
-/* Meta Information (Tagline, Details) */
-.reveal-meta {
-  margin-top: 14px;
-  opacity: 0;
-  transform: translateY(16px);
-  animation: metaFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.75s;
-}
-
-@keyframes metaFadeIn {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.reveal-type-pill {
-  font-family: var(--font-heading);
-  font-size: clamp(0.74rem, 1.8vw, 0.86rem);
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: #38BDF8;
-  margin-bottom: 6px;
-  text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
-}
-
-.reveal-tagline {
-  font-family: var(--font-heading);
-  font-size: clamp(0.92rem, 2.2vw, 1.15rem);
-  font-weight: 600;
-  font-style: italic;
-  letter-spacing: 0.03em;
-  color: #F1F5F9;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-  margin-bottom: 12px;
-}
-
-.reveal-tags {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 22px;
-}
-
-.r-tag {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: #BAE6FD;
-  background: rgba(15, 23, 42, 0.65);
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  padding: 4px 12px;
-  border-radius: var(--radius-pill);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-}
-
-/* Power Dock / Progress Bar */
-.reveal-power-dock {
-  width: 100%;
-  max-width: 440px;
-  margin-bottom: 18px;
-  opacity: 0;
-  transform: translateY(14px);
-  animation: metaFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.9s;
-}
-
-.reveal-bar-track {
-  width: 100%;
-  height: 8px;
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(56, 189, 248, 0.4);
-  border-radius: var(--radius-pill);
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 0 14px rgba(2, 132, 199, 0.25), inset 0 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-.reveal-bar-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #0284C7 0%, #38BDF8 60%, #FFFFFF 100%);
-  border-radius: var(--radius-pill);
-  transition: width 0.14s ease-out;
-  box-shadow: 0 0 16px #38BDF8, 0 0 30px #0284C7;
-  position: relative;
-}
-
-.reveal-bar-spark {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translate(50%, -50%);
-  width: 12px;
-  height: 12px;
-  background: #FFFFFF;
-  border-radius: 50%;
-  box-shadow: 0 0 10px #FFFFFF, 0 0 20px #38BDF8;
-  pointer-events: none;
-}
-
-.reveal-bar-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 8px;
-  font-size: 0.74rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-}
-
-.reveal-status-label {
-  color: #94A3B8;
-}
-
-.reveal-percent-label {
-  color: #38BDF8;
-  font-weight: 700;
-  text-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
-}
-
-/* Enter Website Skip Button */
-.reveal-enter-btn {
-  margin-top: 6px;
-  padding: 10px 28px;
-  font-family: var(--font-heading);
-  font-size: 0.84rem;
-  font-weight: 700;
-  letter-spacing: 0.10em;
-  color: #FFFFFF;
-  background: rgba(14, 165, 233, 0.22);
-  border: 1px solid rgba(56, 189, 248, 0.5);
-  border-radius: var(--radius-pill);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 4px 20px rgba(2, 132, 199, 0.35);
-  transition: all var(--transition-fast);
-  opacity: 0;
-  transform: translateY(12px);
-  animation: metaFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 1s;
-}
-
-.reveal-enter-btn:hover {
-  background: rgba(14, 165, 233, 0.45);
-  border-color: #38BDF8;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 28px rgba(56, 189, 248, 0.6);
-  color: #FFFFFF;
-}
-
-.reveal-enter-btn .enter-btn-arrow {
-  transition: transform var(--transition-fast);
-}
-
-.reveal-enter-btn:hover .enter-btn-arrow {
-  transform: translateX(4px);
-}
 
 /* --------------------------------------------------------------------------
    5. Navigation Bar (Clean White, Subtle Border & Shadow)
@@ -1172,7 +675,80 @@ button {
 }
 
 .hero-title-box {
+  position: relative;
   margin-bottom: 30px;
+  display: inline-block;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Two-Thunder Attack & Collision Stage */
+.thunder-clash-stage {
+  position: absolute;
+  inset: -60px -80px;
+  pointer-events: none;
+  z-index: 2;
+  overflow: visible;
+}
+
+.thunder-clash-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.thunder-impact-flash {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.98) 0%, rgba(56, 189, 248, 0.75) 30%, rgba(220, 38, 38, 0.35) 60%, transparent 80%);
+  filter: blur(10px);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 3;
+}
+
+.thunder-impact-flash.flash-active {
+  animation: impactFlashAnim 0.7s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+@keyframes impactFlashAnim {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
+  25% { opacity: 1; transform: translate(-50%, -50%) scale(1.6); filter: blur(4px); }
+  50% { opacity: 0.8; transform: translate(-50%, -50%) scale(2.2); filter: blur(12px); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(3); filter: blur(20px); }
+}
+
+.thunder-shockwave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 3px solid rgba(56, 189, 248, 0.9);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.8), inset 0 0 15px rgba(220, 38, 38, 0.5);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 3;
+}
+
+.thunder-shockwave.wave-active {
+  animation: shockwaveRingAnim 0.85s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes shockwaveRingAnim {
+  0% { width: 20px; height: 20px; opacity: 1; transform: translate(-50%, -50%) scale(0.4); }
+  50% { opacity: 0.8; border-color: rgba(220, 38, 38, 0.9); }
+  100% { width: min(90vw, 760px); height: min(90vw, 760px); opacity: 0; transform: translate(-50%, -50%) scale(1.2); }
 }
 
 .hero-symposium-badge {
@@ -1186,8 +762,11 @@ button {
   letter-spacing: 0.08em;
   color: var(--color-purple);
   margin-bottom: 14px;
+  position: relative;
+  z-index: 4;
 }
 
+/* The Themed Title Text Reveal State */
 .hero-main-title {
   font-family: var(--font-heading);
   font-size: clamp(2.8rem, 7.5vw, 5.4rem);
@@ -1197,21 +776,72 @@ button {
   margin-bottom: 12px;
 }
 
+.thunder-reveal-title {
+  position: relative;
+  z-index: 4;
+  opacity: 0;
+  transform: scale(0.94);
+  filter: blur(8px);
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  user-select: none;
+}
+
+.thunder-reveal-title.thunder-struck {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+.thunder-reveal-title.strike-surge {
+  animation: textSurgePulse 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes textSurgePulse {
+  0% {
+    filter: drop-shadow(0 0 35px #38BDF8) drop-shadow(0 0 70px #0284C7);
+    transform: scale(1.06);
+  }
+  35% {
+    filter: drop-shadow(0 0 24px rgba(220, 38, 38, 0.75)) drop-shadow(0 0 45px rgba(245, 158, 11, 0.65));
+    transform: scale(1.02);
+  }
+  100% {
+    filter: drop-shadow(0 2px 8px rgba(24, 24, 27, 0.06));
+    transform: scale(1);
+  }
+}
+
 .txt-purple-gradient {
   background: linear-gradient(135deg, #18181B 15%, #DC2626 60%, #B91C1C 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
+  transition: filter var(--transition-fast);
 }
 
 .txt-year {
   color: var(--color-purple);
   font-weight: 800;
   margin-left: 6px;
+  display: inline-block;
 }
 
 .txt-bolt {
   color: #F59E0B;
+  display: inline-block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.thunder-reveal-title.thunder-struck .txt-bolt {
+  animation: boltIdlePulse 2.4s infinite ease-in-out;
+}
+
+@keyframes boltIdlePulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.6)); }
+  50% { transform: scale(1.18); filter: drop-shadow(0 0 16px rgba(245, 158, 11, 0.95)) drop-shadow(0 0 24px rgba(220, 38, 38, 0.6)); }
 }
 
 .hero-tagline {
@@ -1221,6 +851,16 @@ button {
   letter-spacing: 0.04em;
   color: var(--color-charcoal);
   font-style: italic;
+  position: relative;
+  z-index: 4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thunder-reveal-title {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
 }
 
 /* Hero Badge Row: 4 Clean Cards */
